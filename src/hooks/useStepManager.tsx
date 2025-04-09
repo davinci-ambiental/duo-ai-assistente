@@ -30,6 +30,7 @@ export const useStepManager = (initialSteps: Step[]) => {
         status: 'active' as StepStatus
       };
       
+      setSteps(updatedSteps);
       // Move to next step
       setCurrentStep(currentStep + 1);
     }
@@ -38,11 +39,11 @@ export const useStepManager = (initialSteps: Step[]) => {
   // Function to handle skip step
   const handleSkipStep = () => {
     if (currentStep < steps.length - 1) {
-      // Update current step status to pending
+      // Update current step status to skipped (we'll use 'error' status for skipped)
       const updatedSteps = [...steps];
       updatedSteps[currentStep] = {
         ...updatedSteps[currentStep],
-        status: 'pending' as StepStatus
+        status: 'error' as StepStatus // Using 'error' status for skipped steps
       };
       
       // Update next step status to active
@@ -51,6 +52,7 @@ export const useStepManager = (initialSteps: Step[]) => {
         status: 'active' as StepStatus
       };
       
+      setSteps(updatedSteps);
       // Move to next step
       setCurrentStep(currentStep + 1);
     }
@@ -72,6 +74,7 @@ export const useStepManager = (initialSteps: Step[]) => {
         status: 'active' as StepStatus
       };
       
+      setSteps(updatedSteps);
       // Move to previous step
       setCurrentStep(currentStep - 1);
     }

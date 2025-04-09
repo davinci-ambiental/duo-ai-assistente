@@ -24,7 +24,7 @@ const StepIcon = ({ status }: { status: StepStatus }) => {
     case 'active':
       return <Clock className="h-6 w-6 text-davinci-lightGreen animate-pulse-subtle" />;
     case 'error':
-      return <AlertCircle className="h-6 w-6 text-red-500" />;
+      return <AlertCircle className="h-6 w-6 text-yellow-500" />; // Changed to yellow for skipped steps
     default:
       return <Circle className="h-6 w-6 text-davinci-silver/50" />;
   }
@@ -49,7 +49,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ steps, currentStep }) => 
               "pb-2",
               step.status === 'active' ? "text-davinci-darkGray" : "text-davinci-silver",
               step.status === 'completed' && "text-davinci-teal",
-              step.status === 'error' && "text-red-500"
+              step.status === 'error' && "text-yellow-500" // Changed to yellow for skipped steps
             )}>
               <h3 className="text-sm font-medium">{step.title}</h3>
               <p className="mt-1 text-xs">{step.description}</p>
