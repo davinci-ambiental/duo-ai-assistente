@@ -17,13 +17,13 @@ const PhotoCategory: React.FC<PhotoCategoryProps> = ({
   getItemIcon,
   planType
 }) => {
-  console.log("PhotoCategory - Rendering with planType:", planType);
+  console.log("PhotoCategory - Rendering category:", category.id, "with planType:", planType);
   
   return (
     <div className="grid grid-cols-1 gap-6">
       {category.items.map((item) => (
         <PhotoItem 
-          key={item.id} 
+          key={`${planType}-${category.id}-${item.id}`} 
           item={item} 
           categoryId={category.id} 
           onFilesUploaded={onFilesUploaded}

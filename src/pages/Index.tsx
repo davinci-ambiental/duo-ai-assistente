@@ -57,11 +57,12 @@ const Index = () => {
         ? 'Fotos das lixeiras de resíduos recicláveis, não recicláveis e perigosos'
         : 'Fotos das lixeiras de resíduos por grupos (A, B, D, E) e do abrigo temporário',
       status: 'pending' as const,
-      // Use a unique key to force re-rendering when planType changes
-      component: <PhotosUpload planType={planType} key={`photos-upload-${planType}`} />
+      // Force re-rendering when planType changes by using a unique key
+      component: <PhotosUpload planType={planType} key={`photos-upload-${planType}-${Date.now()}`} />
     };
 
     // Return the combined steps
+    console.log(`Index - Creating steps for plan type: ${planType}`);
     return [...commonSteps, photoStep];
   }, [planType]);
 

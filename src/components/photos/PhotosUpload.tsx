@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { PhotosUploadProps, PhotoCategory as PhotoCategoryType } from './types';
@@ -21,16 +20,26 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
   const [categories, setCategories] = useState<PhotoCategoryType[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("");
 
-  console.log("PhotosUpload - Current plan type:", planType); // Add logging to debug
+  console.log("PhotosUpload - Rendering with planType:", planType);
 
-  // Define categories based on plan type
+  // Initialize categories when component mounts or planType changes
   useEffect(() => {
     console.log("PhotosUpload - useEffect triggered with planType:", planType);
     const initialCategories = getCategoriesByPlanType(planType);
-    console.log("PhotosUpload - Categories loaded:", initialCategories); // Add logging
+    console.log("PhotosUpload - Categories loaded:", initialCategories);
+    
+    // Set the categories and default active category
     setCategories(initialCategories);
-    setActiveCategory(initialCategories[0]?.id || '');
-  }, [planType]);
+    
+    // Only set active category if we have categories and it's not already set to a valid one
+    if (initialCategories.length > 0) {
+      setActiveCategory(prevCategory => {
+        // If the previous category exists in the new categories, keep it
+        const categoryExists = initialCategories.some(cat => cat.id === prevCategory);
+        return categoryExists ? prevCategory : initialCategories[0].id;
+      });
+    }
+  }, [planType]); // Re-run when planType changes
 
   const handleFilesUploaded = (categoryId: string, itemId: string, files: File[]) => {
     if (files.length > 0) {
