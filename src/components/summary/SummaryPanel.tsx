@@ -8,6 +8,9 @@ type SummaryPanelProps = {
 };
 
 const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
+  // Determine if we're showing PGRS or PGRSS content
+  const isPGRS = planType === 'PGRS';
+  
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6">
       <div className="text-center mb-3 sm:mb-4 md:mb-6">
@@ -24,7 +27,11 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
           <ul className="space-y-2 text-xs sm:text-sm">
             <li className="flex flex-col sm:flex-row sm:justify-between">
               <span className="text-davinci-silver">Tipo de Plano:</span>
-              <span className="font-medium break-words">{planType === 'PGRS' ? 'Plano de Gerenciamento de Resíduos Sólidos' : 'Plano de Gerenciamento de Resíduos de Serviços de Saúde'}</span>
+              <span className="font-medium break-words">
+                {isPGRS 
+                  ? 'Plano de Gerenciamento de Resíduos Sólidos' 
+                  : 'Plano de Gerenciamento de Resíduos de Serviços de Saúde'}
+              </span>
             </li>
             <li className="flex flex-col sm:flex-row sm:justify-between">
               <span className="text-davinci-silver">CNPJ:</span>
@@ -56,11 +63,19 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
 
       <Card className="overflow-hidden">
         <CardHeader className="p-2 sm:p-3 md:p-4">
-          <CardTitle className="text-sm sm:text-base md:text-lg">Fotos das Lixeiras</CardTitle>
-          <CardDescription className="text-xs md:text-sm">{planType === 'PGRS' ? 'Fotos das lixeiras de resíduos' : 'Fotos das lixeiras de resíduos de serviços de saúde'}</CardDescription>
+          <CardTitle className="text-sm sm:text-base md:text-lg">
+            {isPGRS ? 'Fotos das Lixeiras' : 'Fotos das Lixeiras e Abrigo Temporário'}
+          </CardTitle>
+          <CardDescription className="text-xs md:text-sm">
+            {isPGRS 
+              ? 'Fotos das lixeiras de resíduos recicláveis, não recicláveis e perigosos' 
+              : 'Fotos das lixeiras de resíduos por grupos (A, B, D, E) e do abrigo temporário'}
+          </CardDescription>
         </CardHeader>
         <CardContent className="p-2 sm:p-3 md:p-4 pt-0">
-          <p className="text-xs md:text-sm text-davinci-silver">3 fotos enviadas</p>
+          <p className="text-xs md:text-sm text-davinci-silver">
+            {isPGRS ? '3 fotos enviadas' : '6 fotos enviadas'}
+          </p>
         </CardContent>
       </Card>
 
