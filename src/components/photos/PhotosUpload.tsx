@@ -5,7 +5,7 @@ import { PhotosUploadProps, PhotoCategory as PhotoCategoryType } from './types';
 import PhotoCategory from './PhotoCategory';
 import { getCategoriesByPlanType, getSimulatedAnalysisResult } from './photosUtils';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { InfoIcon } from 'lucide-react';
+import { InfoIcon, BiohazardIcon, FlaskConicalIcon, RecycleIcon, Trash2Icon, ScissorsIcon, DoorClosedIcon } from 'lucide-react';
 
 const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
   const [categories, setCategories] = useState<PhotoCategoryType[]>([]);
@@ -64,6 +64,26 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
     }
   };
 
+  // Get the appropriate icon for PGRSS waste types
+  const getWasteTypeIcon = (itemId: string) => {
+    switch (itemId) {
+      case 'group-a':
+        return <BiohazardIcon className="h-5 w-5 text-red-600" />;
+      case 'group-b':
+        return <FlaskConicalIcon className="h-5 w-5 text-orange-600" />;
+      case 'group-d-recyclable':
+        return <RecycleIcon className="h-5 w-5 text-blue-600" />;
+      case 'group-d-non-recyclable':
+        return <Trash2Icon className="h-5 w-5 text-gray-600" />;
+      case 'group-e':
+        return <ScissorsIcon className="h-5 w-5 text-yellow-600" />;
+      case 'door':
+        return <DoorClosedIcon className="h-5 w-5 text-purple-600" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="space-y-4">
       <div className="text-center mb-6">
@@ -77,14 +97,23 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
         </p>
       </div>
 
-      <Alert className="bg-blue-50 border-blue-200 mb-4">
-        <InfoIcon className="h-4 w-4 text-blue-600" />
-        <AlertDescription className="text-blue-800">
-          {planType === 'PGRS' 
-            ? 'As fotos devem ser claras e mostrar claramente as lixeiras e suas identificações para análise adequada.' 
-            : 'As fotos devem mostrar claramente as lixeiras com suas identificações, sacos de cores específicas e o abrigo temporário com suas características estruturais.'}
-        </AlertDescription>
-      </Alert>
+      {planType === 'PGRSS' && (
+        <Alert className="bg-blue-50 border-blue-200 mb-4">
+          <InfoIcon className="h-4 w-4 text-blue-600" />
+          <AlertDescription className="text-blue-800">
+            As fotos devem mostrar claramente as lixeiras com suas identificações, sacos de cores específicas e o abrigo temporário com suas características estruturais. Nossa IA analisará cada elemento para verificar a conformidade com as normas da RDC 222/2018.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {planType === 'PGRS' && (
+        <Alert className="bg-blue-50 border-blue-200 mb-4">
+          <InfoIcon className="h-4 w-4 text-blue-600" />
+          <AlertDescription className="text-blue-800">
+            As fotos devem ser claras e mostrar claramente as lixeiras e suas identificações para análise adequada.
+          </AlertDescription>
+        </Alert>
+      )}
 
       {categories.length > 0 && (
         <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
@@ -105,19 +134,21 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
               <div className="mb-4">
                 <h3 className="text-md font-medium text-davinci-darkGray">{category.description}</h3>
                 {planType === 'PGRSS' && category.id === 'waste-bins' && (
-                  <p className="text-sm text-davinci-silver mt-1">
-                    Tire fotos das lixeiras para cada grupo de resíduos, certificando-se que é possível ver a cor do saco e a identificação.
+                  <p className="text-sm text-davinci-silver mt-1 mb-4">
+                    Tire fotos das lixeiras para cada grupo de resíduos, certificando-se que é possível ver a cor do saco e a identificação de acordo com as especificações da RDC 222/2018.
                   </p>
                 )}
                 {planType === 'PGRSS' && category.id === 'temp-shelter' && (
-                  <p className="text-sm text-davinci-silver mt-1">
-                    Tire fotos de todas as características importantes do abrigo temporário conforme solicitado.
+                  <p className="text-sm text-davinci-silver mt-1 mb-4">
+                    Tire fotos de todas as características importantes do abrigo temporário conforme solicitado, mostrando claramente cada elemento para análise adequada.
                   </p>
                 )}
               </div>
               <PhotoCategory 
-                category={category} 
-                onFilesUploaded={handleFilesUploaded} 
+                category={category}
+                onFilesUploaded={handleFilesUploaded}
+                getItemIcon={planType === 'PGRSS' ? getWasteTypeIcon : undefined}
+                planType={planType}
               />
             </TabsContent>
           ))}

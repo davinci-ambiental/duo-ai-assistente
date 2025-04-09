@@ -42,31 +42,31 @@ export const getCategoriesByPlanType = (planType: 'PGRS' | 'PGRSS'): PhotoCatego
           { 
             id: 'group-a', 
             name: 'Resíduos do Grupo A (Infectantes)', 
-            description: 'A foto deve mostrar se a lixeira possui pedal e tampa, saco de lixo branco leitoso e identificação com nome e símbolo de resíduos infectantes',
+            description: 'A foto deve mostrar se a lixeira possui pedal e tampa, saco de lixo branco leitoso e identificação na lixeira com nome e símbolo de resíduos infectantes',
             status: 'pending' as const
           },
           { 
             id: 'group-b', 
             name: 'Resíduos do Grupo B (Químicos)', 
-            description: 'A foto deve mostrar se a lixeira possui estrutura rígida, saco de lixo laranja, e identificação com nome e símbolo de resíduos químicos ou perigosos',
+            description: 'A foto deve mostrar se a lixeira possui material de estrutura rígida, e se possuir saco de lixo que ele seja da cor laranja, e que a identificação na lixeira deve ter nome e símbolo de resíduos químicos ou perigosos',
             status: 'pending' as const
           },
           { 
             id: 'group-d-recyclable', 
             name: 'Resíduos do Grupo D (Recicláveis)', 
-            description: 'A foto deve mostrar se a lixeira possui saco de lixo azul e identificação com nome e símbolo de resíduos recicláveis',
+            description: 'Verificar se possui saco de lixo de cor azul e que a identificação na lixeira deve ter nome e símbolo de resíduo reciclável',
             status: 'pending' as const
           },
           { 
             id: 'group-d-non-recyclable', 
             name: 'Resíduos do Grupo D (Não Recicláveis)', 
-            description: 'A foto deve mostrar se a lixeira possui saco de lixo preto e identificação com nome e símbolo de resíduos não recicláveis ou comuns',
+            description: 'Verificar se possui saco de lixo de cor preta e que a identificação na lixeira deve ter nome e símbolo de resíduo NÃO reciclável ou comum',
             status: 'pending' as const
           },
           { 
             id: 'group-e', 
             name: 'Resíduos do Grupo E (Perfurocortantes)', 
-            description: 'A foto deve mostrar se possui embalagem de papelão amarela fixada em suporte na parede',
+            description: 'Possuir embalagem de papelão de cor amarela, fixada em suporte na parede',
             status: 'pending' as const
           }
         ]
@@ -78,32 +78,32 @@ export const getCategoriesByPlanType = (planType: 'PGRS' | 'PGRSS'): PhotoCatego
         items: [
           { 
             id: 'door', 
-            name: 'Porta do Abrigo', 
-            description: 'A foto deve mostrar se a porta possui identificação com nome e símbolo de resíduos infectantes',
+            name: 'Foto da Porta', 
+            description: 'A IA deve avaliar se a porta possui identificação com nome e simbologia dos resíduos infectante',
             status: 'pending' as const
           },
           { 
             id: 'internal', 
-            name: 'Interno do Abrigo', 
-            description: 'A foto deve mostrar se os recipientes (bombonas, lixeiras ou tambores) estão elevados em pallets plásticos, sem contato direto com o chão, e se possuem identificação com nome e símbolo do tipo de resíduo armazenado',
+            name: 'Foto Interna do Abrigo', 
+            description: 'Os recipientes (bombonas, lixeiras ou tambores) devem estar elevados por pallets plásticos, não devem estar em contato direto com o chão. E os recipientes devem ser identificados com nome e simbologia do resíduos armazenado',
             status: 'pending' as const
           },
           { 
             id: 'walls-floor', 
             name: 'Paredes e Pisos', 
-            description: 'A foto deve mostrar se as paredes e pisos são de materiais de fácil higienização',
+            description: 'As paredes e pisos devem ser de materiais de fácil higienização',
             status: 'pending' as const
           },
           { 
             id: 'lighting', 
             name: 'Iluminação', 
-            description: 'A foto deve mostrar se o local possui iluminação artificial ou natural adequada',
+            description: 'Identificar se no local há iluminação artificial ou natural',
             status: 'pending' as const
           },
           { 
             id: 'ventilation', 
             name: 'Ventilação', 
-            description: 'A foto deve mostrar se há janelas ou aberturas para passagem de ar e se estas possuem telas de proteção contra insetos e roedores',
+            description: 'Identificar se no local há janelas ou locais de passagem de ar. Se sim, devem possuir telas de proteção contra insetos e roedores',
             status: 'pending' as const
           }
         ]
