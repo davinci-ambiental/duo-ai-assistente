@@ -180,7 +180,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
                   return { ...item, status: 'processing' };
                 }
                 return item;
-              }
+              })
             };
           }
           return category;
