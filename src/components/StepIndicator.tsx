@@ -20,35 +20,36 @@ type StepIndicatorProps = {
 const StepIcon = ({ status }: { status: StepStatus }) => {
   switch (status) {
     case 'completed':
-      return <CheckCircle className="h-8 w-8 text-pgrs-primary" />;
+      return <CheckCircle className="h-8 w-8 text-davinci-teal" />;
     case 'active':
-      return <Clock className="h-8 w-8 text-pgrs-accent animate-pulse-subtle" />;
+      return <Clock className="h-8 w-8 text-davinci-lightGreen animate-pulse-subtle" />;
     case 'error':
-      return <AlertCircle className="h-8 w-8 text-pgrs-error" />;
+      return <AlertCircle className="h-8 w-8 text-red-500" />;
     default:
-      return <Circle className="h-8 w-8 text-gray-300" />;
+      return <Circle className="h-8 w-8 text-davinci-silver/50" />;
   }
 };
 
 const StepIndicator: React.FC<StepIndicatorProps> = ({ steps, currentStep }) => {
   return (
-    <div className="relative">
+    <div className="relative modern-card p-6">
+      <h2 className="text-xl font-semibold text-davinci-darkGray mb-6">Etapas do Processo</h2>
       <div className="step-indicator-line" />
-      <ul className="space-y-6">
+      <ul className="space-y-8">
         {steps.map((step, index) => (
           <li key={step.id} className="relative pl-12">
             <div className={cn(
               "absolute left-0 -mt-1",
-              index < steps.length - 1 && "after:absolute after:top-8 after:left-4 after:bottom-0 after:w-0.5 after:h-8",
-              index < steps.length - 1 && step.status === 'completed' ? "after:bg-pgrs-primary" : "after:bg-gray-200"
+              index < steps.length - 1 && "after:absolute after:top-8 after:left-4 after:bottom-0 after:w-0.5 after:h-12",
+              index < steps.length - 1 && step.status === 'completed' ? "after:bg-davinci-teal" : "after:bg-gray-200"
             )}>
               <StepIcon status={step.status} />
             </div>
             <div className={cn(
               "pb-6",
-              step.status === 'active' ? "text-gray-900" : "text-gray-500",
-              step.status === 'completed' && "text-pgrs-primary",
-              step.status === 'error' && "text-pgrs-error"
+              step.status === 'active' ? "text-davinci-darkGray" : "text-davinci-silver",
+              step.status === 'completed' && "text-davinci-teal",
+              step.status === 'error' && "text-red-500"
             )}>
               <h3 className="text-lg font-medium">{step.title}</h3>
               <p className="mt-1 text-sm">{step.description}</p>
