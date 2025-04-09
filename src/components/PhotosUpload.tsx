@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Image, FolderOpen } from 'lucide-react';
+import { Image } from 'lucide-react';
 import DocumentUpload from './document-upload';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { PlanType } from '@/types/plans';
@@ -31,7 +31,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
   // Define categories based on plan type
   useEffect(() => {
     if (planType === 'PGRS') {
-      const pgrsCategories = [
+      const pgrsCategories: PhotoCategory[] = [
         {
           id: 'waste-bins',
           title: 'Lixeiras',
@@ -41,19 +41,19 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
               id: 'recyclable', 
               name: 'Resíduos Recicláveis', 
               description: 'Lixeiras específicas para resíduos recicláveis',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'non-recyclable', 
               name: 'Resíduos Não Recicláveis', 
               description: 'Lixeiras para resíduos comuns não recicláveis',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'hazardous', 
               name: 'Resíduos Perigosos', 
               description: 'Lixeiras específicas para resíduos perigosos',
-              status: 'pending' 
+              status: 'pending' as const
             }
           ]
         }
@@ -62,7 +62,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
       setActiveCategory('waste-bins');
     } else {
       // PGRSS Categories
-      const pgrssCategories = [
+      const pgrssCategories: PhotoCategory[] = [
         {
           id: 'waste-bins',
           title: 'Lixeiras',
@@ -72,31 +72,31 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
               id: 'group-a', 
               name: 'Resíduos do Grupo A (Infectantes)', 
               description: 'Verificar: pedal, tampa, saco branco leitoso e identificação com símbolo',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'group-b', 
               name: 'Resíduos do Grupo B (Químicos)', 
               description: 'Verificar: estrutura rígida, saco laranja e identificação com símbolo de risco químico',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'group-d-recyclable', 
               name: 'Resíduos do Grupo D (Recicláveis)', 
               description: 'Verificar: saco azul e identificação com símbolo de reciclável',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'group-d-non-recyclable', 
               name: 'Resíduos do Grupo D (Não Recicláveis)', 
               description: 'Verificar: saco preto e identificação com símbolo de não reciclável',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'group-e', 
               name: 'Resíduos do Grupo E (Perfurocortantes)', 
               description: 'Verificar: embalagem de papelão amarela fixada em suporte na parede',
-              status: 'pending' 
+              status: 'pending' as const
             }
           ]
         },
@@ -109,31 +109,31 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
               id: 'door', 
               name: 'Porta do Abrigo', 
               description: 'Verificar: identificação com nome e símbolo de resíduo infectante',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'internal', 
               name: 'Interno do Abrigo', 
               description: 'Verificar: recipientes elevados em pallets, identificação com nome e símbolo',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'walls-floor', 
               name: 'Paredes e Pisos', 
               description: 'Verificar: materiais de fácil higienização',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'lighting', 
               name: 'Iluminação', 
               description: 'Verificar: presença de iluminação artificial ou natural',
-              status: 'pending' 
+              status: 'pending' as const
             },
             { 
               id: 'ventilation', 
               name: 'Ventilação', 
               description: 'Verificar: janelas ou aberturas com tela de proteção contra insetos e roedores',
-              status: 'pending' 
+              status: 'pending' as const
             }
           ]
         }
@@ -164,7 +164,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
                               if (itm.id === itemId) {
                                 return { 
                                   ...itm, 
-                                  status: 'completed',
+                                  status: 'completed' as const,
                                   value: getSimulatedAnalysisResult(categoryId, itemId)
                                 };
                               }
@@ -177,7 +177,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
                     );
                   }, 3000);
                   
-                  return { ...item, status: 'processing' };
+                  return { ...item, status: 'processing' as const };
                 }
                 return item;
               })

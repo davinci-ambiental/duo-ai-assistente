@@ -14,6 +14,8 @@ type StepContentProps = {
 const StepContent: React.FC<StepContentProps> = ({ 
   children, 
   isLastStep = false, 
+  currentStep,
+  totalSteps,
   planType = 'PGRS'
 }) => {
   return (
