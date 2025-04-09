@@ -131,60 +131,69 @@ const Index = () => {
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-3">
+          {/* Left sidebar with steps - reduced size */}
+          <div className="lg:col-span-2">
             <StepIndicator steps={steps} currentStep={currentStep} />
           </div>
           
-          <div className="lg:col-span-6">
+          {/* Main content area - increased size */}
+          <div className="lg:col-span-8">
             <div className="space-y-8">
-              {steps[currentStep].component}
+              {/* Current step component */}
+              <div className="modern-card p-6">
+                {steps[currentStep].component}
+              </div>
               
-              {/* Navigation buttons */}
-              <div className="flex justify-end space-x-3 mt-8">
-                {currentStep > 0 && (
-                  <Button
-                    variant="outline"
-                    onClick={handleBackStep}
-                    className="text-davinci-darkGray border-davinci-darkGray hover:bg-davinci-lightGray/50"
-                  >
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Voltar
-                  </Button>
-                )}
+              {/* Navigation buttons - restructured layout */}
+              <div className="flex flex-col items-end space-y-2">
+                <div className="flex space-x-3">
+                  {currentStep > 0 && (
+                    <Button
+                      variant="outline"
+                      onClick={handleBackStep}
+                      className="text-davinci-darkGray border-davinci-darkGray hover:bg-davinci-lightGray/50"
+                    >
+                      <ArrowLeft className="mr-2 h-4 w-4" />
+                      Voltar
+                    </Button>
+                  )}
+                  
+                  {currentStep < steps.length - 1 ? (
+                    <Button
+                      onClick={handleNextStep}
+                      className="bg-davinci-teal hover:bg-davinci-darkGreen text-white"
+                    >
+                      Continuar
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={handleSubmit}
+                      className="bg-davinci-teal hover:bg-davinci-darkGreen text-white"
+                    >
+                      Enviar
+                      <Send className="ml-2 h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
                 
                 {currentStep < steps.length - 1 && (
                   <Button
                     variant="outline"
                     onClick={handleSkipStep}
+                    size="sm"
                     className="text-davinci-silver border-davinci-silver hover:bg-davinci-lightGray/50"
                   >
-                    <SkipForward className="mr-2 h-4 w-4" />
+                    <SkipForward className="mr-2 h-3 w-3" />
                     Pular Etapa
-                  </Button>
-                )}
-                
-                {currentStep < steps.length - 1 ? (
-                  <Button
-                    onClick={handleNextStep}
-                    className="bg-davinci-teal hover:bg-davinci-darkGreen text-white"
-                  >
-                    Continuar
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={handleSubmit}
-                    className="bg-davinci-teal hover:bg-davinci-darkGreen text-white"
-                  >
-                    Enviar
-                    <Send className="ml-2 h-4 w-4" />
                   </Button>
                 )}
               </div>
             </div>
           </div>
           
-          <div className="lg:col-span-3">
+          {/* Right sidebar with AI processing - reduced size */}
+          <div className="lg:col-span-2">
             <AIProcessingPanel 
               status={steps[currentStep].status === 'completed' ? 'completed' : 'waiting'}
               fields={[]} 
