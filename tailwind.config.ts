@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,27 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                // Custom colors for the PGRS/PGRSS system
+                pgrs: {
+                    primary: '#10B981',    // Green
+                    secondary: '#34D399',  // Light green
+                    accent: '#3B82F6',     // Blue for AI/tech elements
+                    success: '#059669',    // Dark green for success states
+                    warning: '#F59E0B',    // Amber for warnings
+                    error: '#EF4444',      // Red for errors
+                    light: '#ECFDF5',      // Very light green for backgrounds
+                    dark: '#064E3B',       // Very dark green for text
+                },
+                waste: {
+                    recyclable: '#2DD4BF',     // Teal for recyclable waste
+                    nonrecyclable: '#4B5563',  // Gray for non-recyclable
+                    hazardous: '#F59E0B',      // Amber for hazardous
+                    groupA: '#EF4444',         // Red for Group A (infectious)
+                    groupB: '#F59E0B',         // Amber for Group B (chemical)
+                    groupD: '#2DD4BF',         // Teal for Group D (recyclable)
+                    groupE: '#6366F1',         // Indigo for Group E (sharps)
+                }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +105,26 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                'pulse-subtle': {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.7' }
+                },
+                'spin-slow': {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' }
+                },
+                'fade-in': {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' }
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'pulse-subtle': 'pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'spin-slow': 'spin-slow 3s linear infinite',
+                'fade-in': 'fade-in 0.5s ease-out'
 			}
 		}
 	},
