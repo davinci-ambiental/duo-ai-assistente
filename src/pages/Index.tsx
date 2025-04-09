@@ -66,14 +66,14 @@ const Index = () => {
   const isLastStep = currentStep === steps.length - 1;
 
   return (
-    <div className="min-h-screen bg-davinci-lightGray/30">
+    <div className="min-h-screen bg-davinci-lightGray/30 w-full overflow-x-hidden">
       <Header planType={planType} onChangePlanType={setPlanType} />
       
-      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 md:py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6">
         <ThreeColumnLayout
           leftSidebar={<StepIndicator steps={steps} currentStep={currentStep} />}
           mainContent={
-            <div className="space-y-4 md:space-y-8">
+            <div className="space-y-3 sm:space-y-4 md:space-y-6">
               <StepContent
                 isLastStep={isLastStep}
                 currentStep={currentStep}
@@ -93,7 +93,7 @@ const Index = () => {
               />
             </div>
           }
-          // Removed the rightSidebar prop to no longer display the AI Processing Panel
+          // Já removido o rightSidebar conforme solicitado anteriormente
         />
       </main>
     </div>

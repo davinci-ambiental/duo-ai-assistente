@@ -93,13 +93,17 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-inter overflow-x-hidden;
+  }
+  
+  html {
+    @apply overflow-x-hidden;
   }
 }
 
 /* Custom styles for the file drop zone */
 .file-drop-zone {
-  @apply border-2 border-dashed border-gray-300 rounded-lg p-8 
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 md:p-8 
     text-center flex flex-col items-center justify-center transition-all 
     hover:border-davinci-teal hover:bg-davinci-lightGray/20 cursor-pointer;
 }
@@ -114,7 +118,7 @@
 }
 
 .step-indicator-line {
-  @apply absolute left-4 h-full w-0.5 bg-gray-200 -z-10;
+  @apply absolute left-3 sm:left-4 h-full w-0.5 bg-gray-200 -z-10;
 }
 
 .step-connector-complete {
@@ -129,4 +133,22 @@
 /* Modern card styles */
 .modern-card {
   @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100;
+}
+
+/* Responsive utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .break-anywhere {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 640px) {
+  .container {
+    @apply px-3;
+  }
 }

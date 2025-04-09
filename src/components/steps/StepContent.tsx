@@ -17,7 +17,7 @@ const StepContent: React.FC<StepContentProps> = ({
   planType = 'PGRS'
 }) => {
   return (
-    <div className="modern-card p-4 md:p-6 w-full overflow-auto">
+    <div className="modern-card p-3 sm:p-4 md:p-6 w-full max-h-[calc(100vh-200px)] overflow-auto">
       {isLastStep ? (
         <SummaryPanel planType={planType} />
       ) : (
