@@ -63,6 +63,9 @@ const Index = () => {
     // Here you could add API calls to submit the form data
   };
 
+  // Check if current step is the last one
+  const isLastStep = currentStep === steps.length - 1;
+
   return (
     <div className="min-h-screen bg-davinci-lightGray/30">
       <Header planType={planType} onChangePlanType={setPlanType} />
@@ -72,7 +75,12 @@ const Index = () => {
           leftSidebar={<StepIndicator steps={steps} currentStep={currentStep} />}
           mainContent={
             <div className="space-y-8">
-              <StepContent>
+              <StepContent
+                isLastStep={isLastStep}
+                currentStep={currentStep}
+                totalSteps={steps.length}
+                planType={planType}
+              >
                 {steps[currentStep].component}
               </StepContent>
               
