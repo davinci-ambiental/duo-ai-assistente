@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StepStatus } from '@/components/StepIndicator';
 
 export type Step = {
@@ -13,6 +13,20 @@ export type Step = {
 export const useStepManager = (initialSteps: Step[]) => {
   const [steps, setSteps] = useState<Step[]>(initialSteps);
   const [currentStep, setCurrentStep] = useState(0);
+
+  // Update steps when initialSteps changes (e.g., when plan type changes)
+  useEffect(() => {
+    console.log("useStepManager - Updating steps with new initialSteps");
+    
+    // Reset to initial state with the new steps
+    setSteps(initialSteps);
+    
+    // If we're not on the first step, reset to the first step
+    // This ensures we start fresh when switching plan types
+    if (currentStep > 0) {
+      setCurrentStep(0);
+    }
+  }, [initialSteps]);
 
   // Function to handle next step navigation
   const handleNextStep = () => {

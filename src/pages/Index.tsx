@@ -22,41 +22,56 @@ const Index = () => {
     console.log("Index - Current plan type changed to:", planType);
   }, [planType]);
 
-  const initialSteps = useMemo(() => [
-    {
-      id: '1',
-      title: 'Informações do Estabelecimento',
-      description: 'Envio de Cartão CNPJ para extração de dados cadastrais',
-      status: 'active' as const,
-      component: <CNPJUpload />
-    },
-    {
-      id: '2',
-      title: 'Licenças Ambientais',
-      description: 'Envio das licenças ambientais para validação e conformidade',
-      status: 'pending' as const,
-      component: <LicensesUpload />
-    },
-    {
-      id: '3',
-      title: 'Certificados de Destinação',
-      description: 'Envio dos certificados de destinação final dos últimos 12 meses',
-      status: 'pending' as const,
-      component: <CertificatesUpload />
-    },
-    {
+  // Create different steps based on plan type
+  const initialSteps = useMemo(() => {
+    // Shared steps (first three are the same for both plan types)
+    const commonSteps = [
+      {
+        id: '1',
+        title: 'Informações do Estabelecimento',
+        description: 'Envio de Cartão CNPJ para extração de dados cadastrais',
+        status: 'active' as const,
+        component: <CNPJUpload />
+      },
+      {
+        id: '2',
+        title: 'Licenças Ambientais',
+        description: 'Envio das licenças ambientais para validação e conformidade',
+        status: 'pending' as const,
+        component: <LicensesUpload />
+      },
+      {
+        id: '3',
+        title: 'Certificados de Destinação',
+        description: 'Envio dos certificados de destinação final dos últimos 12 meses',
+        status: 'pending' as const,
+        component: <CertificatesUpload />
+      }
+    ];
+
+    // Plan-specific photo step
+    const photoStep = {
       id: '4',
-      title: 'Fotos das Lixeiras',
+      title: planType === 'PGRS' ? 'Fotos das Lixeiras' : 'Fotos das Lixeiras e Abrigo Temporário',
       description: planType === 'PGRS' 
         ? 'Fotos das lixeiras de resíduos recicláveis, não recicláveis e perigosos'
-        : 'Fotos das lixeiras específicas para resíduos de serviços de saúde',
+        : 'Fotos das lixeiras de resíduos por grupos (A, B, D, E) e do abrigo temporário',
       status: 'pending' as const,
-      // Add a unique key based on planType to force re-rendering when planType changes
+      // Use a unique key to force re-rendering when planType changes
       component: <PhotosUpload planType={planType} key={`photos-upload-${planType}`} />
-    }
-  ], [planType]);
+    };
 
+    // Return the combined steps
+    return [...commonSteps, photoStep];
+  }, [planType]);
+
+  // Reset step manager when plan type changes
   const { steps, currentStep, handleNextStep, handleSkipStep, handleBackStep } = useStepManager(initialSteps);
+
+  // Effects to reset steps when planType changes
+  useEffect(() => {
+    console.log("Steps updated for plan type:", planType, initialSteps);
+  }, [initialSteps, planType]);
 
   const handleSubmit = () => {
     toast({
