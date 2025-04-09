@@ -93,17 +93,31 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter overflow-x-hidden;
+    @apply bg-background text-foreground font-inter overflow-x-hidden min-h-screen;
   }
   
   html {
-    @apply overflow-x-hidden;
+    @apply overflow-x-hidden scroll-smooth text-base;
+    font-size: 16px;
+  }
+
+  /* Responsive font sizes */
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    html {
+      font-size: 13px;
+    }
   }
 }
 
 /* Custom styles for the file drop zone */
 .file-drop-zone {
-  @apply border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 md:p-8 
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 md:p-6 
     text-center flex flex-col items-center justify-center transition-all 
     hover:border-davinci-teal hover:bg-davinci-lightGray/20 cursor-pointer;
 }
@@ -148,6 +162,11 @@
   
   .break-anywhere {
     overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  .break-all {
+    word-break: break-all;
   }
   
   .animate-fade-in {
@@ -173,6 +192,31 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-start {
+    @apply flex items-center justify-start;
+  }
+
+  .flex-end {
+    @apply flex items-center justify-end;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -201,4 +245,36 @@
 
 .shadow-card-hover {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Safe area insets for modern mobile browsers */
+@supports (padding: max(0px)) {
+  .safe-padding-bottom {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+  }
+  
+  .safe-padding-top {
+    padding-top: max(1.5rem, env(safe-area-inset-top, 1.5rem));
+  }
+  
+  .safe-padding-left {
+    padding-left: max(1rem, env(safe-area-inset-left, 1rem));
+  }
+  
+  .safe-padding-right {
+    padding-right: max(1rem, env(safe-area-inset-right, 1rem));
+  }
+}
+
+/* Responsive aspect ratios for images */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
 }

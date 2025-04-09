@@ -22,13 +22,13 @@ type StepIndicatorProps = {
 const StepIcon = ({ status }: { status: StepStatus }) => {
   switch (status) {
     case 'completed':
-      return <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-davinci-teal" />;
+      return <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-davinci-teal" />;
     case 'active':
-      return <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-davinci-lightGreen animate-pulse-subtle" />;
+      return <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-davinci-lightGreen animate-pulse-subtle" />;
     case 'error':
-      return <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-500" />;
+      return <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500" />;
     default:
-      return <Circle className="h-5 w-5 sm:h-6 sm:w-6 text-davinci-silver/50" />;
+      return <Circle className="h-4 w-4 sm:h-5 sm:w-5 text-davinci-silver/50" />;
   }
 };
 
@@ -47,19 +47,19 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ steps, currentStep, total
   const allSteps = [...steps, summaryStep];
 
   return (
-    <div className="relative modern-card p-3 sm:p-4 h-full overflow-auto">
-      <h2 className="text-base sm:text-lg font-semibold text-davinci-darkGray mb-3 sm:mb-4">Etapas do Processo</h2>
+    <div className="relative modern-card p-2 sm:p-3 md:p-4 h-full overflow-auto no-scrollbar">
+      <h2 className="text-sm sm:text-base font-semibold text-davinci-darkGray mb-2 sm:mb-3 md:mb-4">Etapas do Processo</h2>
       <div className="step-indicator-line" />
-      <ul className="space-y-3 sm:space-y-4">
+      <ul className="space-y-2 sm:space-y-3 md:space-y-4">
         {allSteps.map((step, index) => (
-          <li key={step.id} className="relative pl-7 sm:pl-8">
+          <li key={step.id} className="relative pl-6 sm:pl-7">
             <div className={cn(
-              "absolute left-0 -mt-1",
-              index < allSteps.length - 1 && "after:absolute after:top-6 after:left-2.5 sm:after:left-3 after:bottom-0 after:w-0.5 after:h-6 sm:after:h-8",
+              "absolute left-0 top-0",
+              index < allSteps.length - 1 && "after:absolute after:top-5 sm:after:top-6 after:left-2 sm:after:left-2.5 after:bottom-0 after:w-0.5 after:h-6 sm:after:h-7 md:after:h-8",
               index < allSteps.length - 1 && step.status === 'completed' ? "after:bg-davinci-teal" : "after:bg-gray-200"
             )}>
               {index === allSteps.length - 1 && step.status !== 'active' && step.status !== 'completed' ? 
-                <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-davinci-silver/50" /> : 
+                <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-davinci-silver/50" /> : 
                 <StepIcon status={step.status} />
               }
             </div>
@@ -69,8 +69,8 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ steps, currentStep, total
               step.status === 'completed' && "text-davinci-teal",
               step.status === 'error' && "text-yellow-500"
             )}>
-              <h3 className="text-xs sm:text-sm font-medium truncate">{step.title}</h3>
-              <p className="mt-0.5 sm:mt-1 text-xs leading-tight line-clamp-2">{step.description}</p>
+              <h3 className="text-xs sm:text-sm font-medium line-clamp-1 break-anywhere">{step.title}</h3>
+              <p className="mt-0.5 text-xs leading-tight line-clamp-2 break-anywhere">{step.description}</p>
             </div>
           </li>
         ))}

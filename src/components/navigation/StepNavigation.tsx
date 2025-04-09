@@ -27,34 +27,34 @@ const StepNavigation: React.FC<StepNavigationProps> = ({
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex flex-col items-end space-y-2">
-      <div className="flex flex-wrap justify-end gap-2 sm:gap-3 w-full">
+    <div className="flex flex-col items-end space-y-2 w-full">
+      <div className="flex flex-wrap justify-end gap-2 w-full">
         {!isFirstStep && (
           <Button
             variant="outline"
             onClick={onBack}
-            className="text-davinci-darkGray border-davinci-darkGray hover:bg-davinci-lightGray/50 h-auto px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm"
+            className="text-davinci-darkGray border-davinci-darkGray hover:bg-davinci-lightGray/50 h-auto px-2 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm"
           >
-            <ArrowLeft className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-            Voltar
+            <ArrowLeft className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="whitespace-nowrap">Voltar</span>
           </Button>
         )}
         
         {!isSummaryStep ? (
           <Button
             onClick={onNext}
-            className="bg-davinci-teal hover:bg-davinci-darkGreen text-white h-auto px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm"
+            className="bg-davinci-teal hover:bg-davinci-darkGreen text-white h-auto px-2 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm"
           >
-            Continuar
-            <ArrowRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="whitespace-nowrap">Continuar</span>
+            <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
         ) : (
           <Button
             onClick={onSubmit}
-            className="bg-davinci-teal hover:bg-davinci-darkGreen text-white h-auto px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm"
+            className="bg-davinci-teal hover:bg-davinci-darkGreen text-white h-auto px-2 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm"
           >
-            Enviar
-            <Send className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="whitespace-nowrap">Enviar</span>
+            <Send className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
         )}
       </div>
@@ -64,10 +64,10 @@ const StepNavigation: React.FC<StepNavigationProps> = ({
           variant="outline"
           onClick={onSkip}
           size="sm"
-          className="text-davinci-silver border-davinci-silver hover:bg-davinci-lightGray/50 text-xs h-auto px-2 py-1 sm:text-sm"
+          className="text-davinci-silver border-davinci-silver hover:bg-davinci-lightGray/50 text-xs h-auto px-2 py-1"
         >
-          <SkipForward className="mr-1 sm:mr-2 h-2.5 w-2.5 sm:h-3 sm:w-3" />
-          Pular Etapa
+          <SkipForward className="mr-1 h-2.5 w-2.5" />
+          <span className="whitespace-nowrap">Pular Etapa</span>
         </Button>
       )}
     </div>
