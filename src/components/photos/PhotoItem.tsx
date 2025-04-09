@@ -22,6 +22,7 @@ const PhotoItem: React.FC<PhotoItemProps> = ({
   planType
 }) => {
   const isPGRSS = planType === 'PGRSS';
+  console.log("PhotoItem - Rendering item:", item.id, "with planType:", planType);
   
   return (
     <div key={item.id} className={cn(

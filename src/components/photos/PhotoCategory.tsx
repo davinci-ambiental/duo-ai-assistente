@@ -17,6 +17,8 @@ const PhotoCategory: React.FC<PhotoCategoryProps> = ({
   getItemIcon,
   planType
 }) => {
+  console.log("PhotoCategory - Rendering with planType:", planType);
+  
   return (
     <div className="grid grid-cols-1 gap-6">
       {category.items.map((item) => (

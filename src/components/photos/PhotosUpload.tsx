@@ -23,6 +23,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
 
   // Define categories based on plan type
   useEffect(() => {
+    console.log("PhotosUpload - useEffect triggered with planType:", planType);
     const initialCategories = getCategoriesByPlanType(planType);
     console.log("PhotosUpload - Categories loaded:", initialCategories); // Add logging
     setCategories(initialCategories);
