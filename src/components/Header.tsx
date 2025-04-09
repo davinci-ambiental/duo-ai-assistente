@@ -4,6 +4,7 @@ import { FileText, BarChart2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Link } from 'react-router-dom';
 
 type HeaderProps = {
   planType: 'PGRS' | 'PGRSS';
@@ -66,9 +67,12 @@ const Header: React.FC<HeaderProps> = ({ planType, onChangePlanType }) => {
             <Button 
               variant="outline" 
               className="flex items-center gap-1 sm:gap-2 border-davinci-teal text-davinci-teal hover:bg-davinci-teal/10 text-xs sm:text-sm h-auto px-2 sm:px-4 py-1 sm:py-2"
+              asChild
             >
-              <BarChart2 className="h-3 w-3 sm:h-4 sm:w-4" />
-              <span>Relatórios</span>
+              <Link to="/reports">
+                <BarChart2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span>Relatórios</span>
+              </Link>
             </Button>
           </div>
         </div>
