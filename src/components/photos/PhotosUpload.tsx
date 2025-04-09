@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { PhotosUploadProps, PhotoCategory as PhotoCategoryType } from './types';
 import PhotoCategory from './PhotoCategory';
 import { getCategoriesByPlanType, getSimulatedAnalysisResult } from './photosUtils';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { InfoIcon } from 'lucide-react';
 
 const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
   const [categories, setCategories] = useState<PhotoCategoryType[]>([]);
@@ -75,6 +77,15 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
         </p>
       </div>
 
+      <Alert className="bg-blue-50 border-blue-200 mb-4">
+        <InfoIcon className="h-4 w-4 text-blue-600" />
+        <AlertDescription className="text-blue-800">
+          {planType === 'PGRS' 
+            ? 'As fotos devem ser claras e mostrar claramente as lixeiras e suas identificações para análise adequada.' 
+            : 'As fotos devem mostrar claramente as lixeiras com suas identificações, sacos de cores específicas e o abrigo temporário com suas características estruturais.'}
+        </AlertDescription>
+      </Alert>
+
       {categories.length > 0 && (
         <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
           <TabsList className="w-full flex mb-6 bg-davinci-lightGray/30">
@@ -90,11 +101,25 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
           </TabsList>
 
           {categories.map((category) => (
-            <PhotoCategory 
-              key={category.id} 
-              category={category} 
-              onFilesUploaded={handleFilesUploaded} 
-            />
+            <TabsContent key={category.id} value={category.id}>
+              <div className="mb-4">
+                <h3 className="text-md font-medium text-davinci-darkGray">{category.description}</h3>
+                {planType === 'PGRSS' && category.id === 'waste-bins' && (
+                  <p className="text-sm text-davinci-silver mt-1">
+                    Tire fotos das lixeiras para cada grupo de resíduos, certificando-se que é possível ver a cor do saco e a identificação.
+                  </p>
+                )}
+                {planType === 'PGRSS' && category.id === 'temp-shelter' && (
+                  <p className="text-sm text-davinci-silver mt-1">
+                    Tire fotos de todas as características importantes do abrigo temporário conforme solicitado.
+                  </p>
+                )}
+              </div>
+              <PhotoCategory 
+                category={category} 
+                onFilesUploaded={handleFilesUploaded} 
+              />
+            </TabsContent>
           ))}
         </Tabs>
       )}

@@ -59,7 +59,7 @@ const Index = () => {
     });
   };
 
-  // The problem is here - we need to show the summary only after the photos step
+  // Check if we're on the summary step (after all content steps)
   const isLastStep = currentStep === steps.length;
 
   return (

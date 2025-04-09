@@ -22,7 +22,8 @@ const StepNavigation: React.FC<StepNavigationProps> = ({
   onSubmit,
 }) => {
   const isFirstStep = currentStep === 0;
-  const isLastStep = currentStep === totalSteps;
+  const isLastStep = currentStep === totalSteps - 1;
+  const isSummaryStep = currentStep === totalSteps;
   const isMobile = useIsMobile();
 
   return (
@@ -39,7 +40,7 @@ const StepNavigation: React.FC<StepNavigationProps> = ({
           </Button>
         )}
         
-        {!isLastStep ? (
+        {!isSummaryStep ? (
           <Button
             onClick={onNext}
             className="bg-davinci-teal hover:bg-davinci-darkGreen text-white h-auto px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm"
@@ -58,7 +59,7 @@ const StepNavigation: React.FC<StepNavigationProps> = ({
         )}
       </div>
       
-      {!isLastStep && (
+      {!isSummaryStep && !isLastStep && (
         <Button
           variant="outline"
           onClick={onSkip}
