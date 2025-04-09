@@ -6,6 +6,7 @@ import CNPJUpload from '@/components/CNPJUpload';
 import LicensesUpload from '@/components/LicensesUpload';
 import CertificatesUpload from '@/components/CertificatesUpload';
 import PhotosUpload from '@/components/PhotosUpload';
+import AIProcessingPanel from '@/components/AIProcessingPanel';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ArrowLeft, SkipForward, Send } from 'lucide-react';
 

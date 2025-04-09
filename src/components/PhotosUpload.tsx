@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Image } from 'lucide-react';
-import DocumentUpload from './DocumentUpload';
+import DocumentUpload from './document-upload';
 import AIProcessingPanel, { ProcessingField, ProcessingStatus } from './AIProcessingPanel';
 
 type PhotosUploadProps = {

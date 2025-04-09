@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { FileText } from 'lucide-react';
-import DocumentUpload from './DocumentUpload';
+import DocumentUpload from './document-upload';
 import AIProcessingPanel, { ProcessingField, ProcessingStatus } from './AIProcessingPanel';
 
 const CNPJUpload: React.FC = () => {
