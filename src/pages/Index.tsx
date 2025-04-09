@@ -70,11 +70,11 @@ const Index = () => {
     <div className="min-h-screen bg-davinci-lightGray/30">
       <Header planType={planType} onChangePlanType={setPlanType} />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 md:py-8">
         <ThreeColumnLayout
           leftSidebar={<StepIndicator steps={steps} currentStep={currentStep} />}
           mainContent={
-            <div className="space-y-8">
+            <div className="space-y-4 md:space-y-8">
               <StepContent
                 isLastStep={isLastStep}
                 currentStep={currentStep}

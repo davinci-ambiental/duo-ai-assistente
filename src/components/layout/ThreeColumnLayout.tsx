@@ -13,14 +13,14 @@ const ThreeColumnLayout: React.FC<ThreeColumnLayoutProps> = ({
   rightSidebar,
 }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <div className="lg:col-span-2">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:gap-8">
+      <div className="md:col-span-3 lg:col-span-2">
         {leftSidebar}
       </div>
-      <div className="lg:col-span-8">
+      <div className="md:col-span-6 lg:col-span-8">
         {mainContent}
       </div>
-      <div className="lg:col-span-2">
+      <div className="md:col-span-3 lg:col-span-2">
         {rightSidebar}
       </div>
     </div>
