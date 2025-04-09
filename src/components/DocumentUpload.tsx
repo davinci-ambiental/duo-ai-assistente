@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { Upload, FileText, Trash2, FilePlus, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -177,8 +176,7 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({
                 </div>
                 <Progress 
                   value={fileObj.progress} 
-                  className="h-1.5"
-                  indicatorClassName="bg-davinci-teal" 
+                  className="h-1.5 bg-gray-200"
                 />
               </div>
               <div className="flex-shrink-0 ml-3">

@@ -6,6 +6,8 @@ import CNPJUpload from '@/components/CNPJUpload';
 import LicensesUpload from '@/components/LicensesUpload';
 import CertificatesUpload from '@/components/CertificatesUpload';
 import PhotosUpload from '@/components/PhotosUpload';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, SkipForward } from 'lucide-react';
 
 type Step = {
   id: string;
@@ -53,6 +55,48 @@ const Index = () => {
     }
   ];
 
+  // Function to handle next step navigation
+  const handleNextStep = () => {
+    if (currentStep < steps.length - 1) {
+      // Update current step status to completed
+      const updatedSteps = [...steps];
+      updatedSteps[currentStep] = {
+        ...updatedSteps[currentStep],
+        status: 'completed' as StepStatus
+      };
+      
+      // Update next step status to active
+      updatedSteps[currentStep + 1] = {
+        ...updatedSteps[currentStep + 1],
+        status: 'active' as StepStatus
+      };
+      
+      // Move to next step
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  // Function to handle skip step
+  const handleSkipStep = () => {
+    if (currentStep < steps.length - 1) {
+      // Update current step status to pending
+      const updatedSteps = [...steps];
+      updatedSteps[currentStep] = {
+        ...updatedSteps[currentStep],
+        status: 'pending' as StepStatus
+      };
+      
+      // Update next step status to active
+      updatedSteps[currentStep + 1] = {
+        ...updatedSteps[currentStep + 1],
+        status: 'active' as StepStatus
+      };
+      
+      // Move to next step
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-davinci-lightGray/30">
       <Header planType={planType} onChangePlanType={setPlanType} />
@@ -66,6 +110,28 @@ const Index = () => {
           <div className="lg:col-span-3">
             <div className="space-y-8">
               {steps[currentStep].component}
+              
+              {/* Navigation buttons */}
+              <div className="flex justify-between mt-8">
+                <Button
+                  variant="outline"
+                  onClick={handleSkipStep}
+                  className="text-davinci-silver border-davinci-silver hover:bg-davinci-lightGray/50"
+                  disabled={currentStep === steps.length - 1}
+                >
+                  <SkipForward className="mr-2 h-4 w-4" />
+                  Pular Etapa
+                </Button>
+                
+                <Button
+                  onClick={handleNextStep}
+                  className="bg-davinci-teal hover:bg-davinci-darkGreen text-white"
+                  disabled={currentStep === steps.length - 1}
+                >
+                  Continuar
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
