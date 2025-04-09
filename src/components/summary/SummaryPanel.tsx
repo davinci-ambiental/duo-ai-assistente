@@ -18,30 +18,30 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         <p className="text-xs sm:text-sm md:text-base text-davinci-silver">Verifique as informações abaixo antes de enviar</p>
       </div>
 
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
         <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
           <CardTitle className="text-sm sm:text-base md:text-lg">Informações do Estabelecimento</CardTitle>
           <CardDescription className="text-xs md:text-sm">Dados cadastrais extraídos do CNPJ</CardDescription>
         </CardHeader>
         <CardContent className="p-2 sm:p-3 md:p-4 pt-0">
           <ul className="space-y-2 text-xs sm:text-sm">
-            <li className="flex flex-col sm:flex-row sm:justify-between">
-              <span className="text-davinci-silver">Tipo de Plano:</span>
-              <span className="font-medium break-words">
+            <li className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <span className="text-davinci-silver whitespace-nowrap">Tipo de Plano:</span>
+              <span className="font-medium break-words sm:text-right sm:max-w-[70%]">
                 {isPGRS 
                   ? 'Plano de Gerenciamento de Resíduos Sólidos' 
                   : 'Plano de Gerenciamento de Resíduos de Serviços de Saúde'}
               </span>
             </li>
-            <li className="flex flex-col sm:flex-row sm:justify-between">
-              <span className="text-davinci-silver">CNPJ:</span>
-              <span className="font-medium">XX.XXX.XXX/0001-XX</span>
+            <li className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+              <span className="text-davinci-silver whitespace-nowrap">CNPJ:</span>
+              <span className="font-medium sm:text-right">XX.XXX.XXX/0001-XX</span>
             </li>
           </ul>
         </CardContent>
       </Card>
 
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
         <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
           <CardTitle className="text-sm sm:text-base md:text-lg">Licenças Ambientais</CardTitle>
           <CardDescription className="text-xs md:text-sm">Documentos enviados para validação</CardDescription>
@@ -51,7 +51,7 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         </CardContent>
       </Card>
 
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
         <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
           <CardTitle className="text-sm sm:text-base md:text-lg">Certificados de Destinação</CardTitle>
           <CardDescription className="text-xs md:text-sm">Documentos dos últimos 12 meses</CardDescription>
@@ -61,7 +61,7 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         </CardContent>
       </Card>
 
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
         <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
           <CardTitle className="text-sm sm:text-base md:text-lg">
             {isPGRS ? 'Fotos das Lixeiras' : 'Fotos das Lixeiras e Abrigo Temporário'}
@@ -79,7 +79,7 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         </CardContent>
       </Card>
 
-      <div className="mt-3 sm:mt-4 md:mt-6 p-2 sm:p-3 md:p-4 bg-yellow-50 border border-yellow-200 rounded-lg shadow-md">
+      <div className="mt-3 sm:mt-4 md:mt-6 p-2 sm:p-3 md:p-4 bg-yellow-50 border border-yellow-200 rounded-lg shadow-card">
         <p className="text-xs md:text-sm text-yellow-700">
           <strong>Importante:</strong> Ao clicar em "Enviar", você confirma que todas as informações fornecidas são verdadeiras.
         </p>

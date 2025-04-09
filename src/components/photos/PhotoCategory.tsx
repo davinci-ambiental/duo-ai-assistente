@@ -20,7 +20,7 @@ const PhotoCategory: React.FC<PhotoCategoryProps> = ({
   console.log("PhotoCategory - Rendering category:", category.id, "with planType:", planType);
   
   return (
-    <div className="grid grid-cols-1 gap-6">
+    <div className="grid grid-cols-1 gap-4 sm:gap-6">
       {category.items.map((item) => (
         <PhotoItem 
           key={`${planType}-${category.id}-${item.id}`} 

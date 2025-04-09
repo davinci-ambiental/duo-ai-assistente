@@ -132,7 +132,7 @@
 
 /* Modern card styles */
 .modern-card {
-  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100;
+  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 overflow-hidden;
 }
 
 /* Enhanced tab styles for PGRSS */
@@ -153,6 +153,27 @@
   .animate-fade-in {
     animation: fadeIn 0.3s ease-in-out;
   }
+  
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
 }
 
 @keyframes fadeIn {
@@ -171,4 +192,13 @@
   .container {
     @apply px-3;
   }
+}
+
+/* Better box shadows */
+.shadow-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }

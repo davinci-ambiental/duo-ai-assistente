@@ -26,7 +26,7 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
   className,
 }) => {
   return (
-    <div className={cn("modern-card overflow-hidden", className)}>
+    <div className={cn("modern-card overflow-hidden shadow-card hover:shadow-card-hover", className)}>
       <div className="bg-gradient-to-r from-davinci-teal to-davinci-lightGreen p-3">
         <div className="flex items-center space-x-2">
           <div className="bg-white/90 p-1.5 rounded-full">
@@ -44,9 +44,9 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
         </div>
       </div>
       
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         <div className="mb-3">
-          <div className="flex items-center space-x-2 mb-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
             <p className="text-xs font-medium text-davinci-darkGray">Status:</p>
             {status === 'waiting' && (
               <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-davinci-lightGray text-davinci-silver">
@@ -88,10 +88,10 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
             <div className="bg-davinci-lightGray/30 rounded-lg p-2 divide-y divide-gray-100">
               {fields.map((field) => (
                 <div key={field.id} className="py-2 first:pt-0 last:pb-0">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-xs font-medium text-davinci-darkGray">{field.name}:</span>
                     <span className={cn(
-                      "text-xs font-medium px-1.5 py-0.5 rounded-full",
+                      "text-xs font-medium px-1.5 py-0.5 rounded-full whitespace-nowrap",
                       field.status === 'pending' && "bg-davinci-lightGray text-davinci-silver",
                       field.status === 'processing' && "bg-blue-100 text-blue-700",
                       field.status === 'completed' && "bg-green-100 text-green-700",
@@ -109,7 +109,7 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
                     </span>
                   </div>
                   {field.value && (
-                    <p className="mt-1 text-xs text-davinci-silver break-words">
+                    <p className="mt-1 text-xs text-davinci-silver break-words line-clamp-3">
                       {field.value}
                     </p>
                   )}

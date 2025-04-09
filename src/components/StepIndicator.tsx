@@ -64,13 +64,13 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ steps, currentStep, total
               }
             </div>
             <div className={cn(
-              "pb-1 sm:pb-2 break-words",
+              "pb-1 sm:pb-2 break-words max-w-full",
               step.status === 'active' ? "text-davinci-darkGray" : "text-davinci-silver",
               step.status === 'completed' && "text-davinci-teal",
               step.status === 'error' && "text-yellow-500"
             )}>
-              <h3 className="text-xs sm:text-sm font-medium">{step.title}</h3>
-              <p className="mt-0.5 sm:mt-1 text-xs leading-tight">{step.description}</p>
+              <h3 className="text-xs sm:text-sm font-medium truncate">{step.title}</h3>
+              <p className="mt-0.5 sm:mt-1 text-xs leading-tight line-clamp-2">{step.description}</p>
             </div>
           </li>
         ))}
