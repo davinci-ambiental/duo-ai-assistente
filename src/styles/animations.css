@@ -1,0 +1,22 @@
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Processing indicator styles */
+.processing-pulse {
+  @apply animate-pulse-subtle text-davinci-teal;
+}

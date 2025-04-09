@@ -1,0 +1,69 @@
+
+/* Layout utilities */
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex items-center justify-between;
+}
+
+.flex-start {
+  @apply flex items-center justify-start;
+}
+
+.flex-end {
+  @apply flex items-center justify-end;
+}
+
+/* Aspect ratios */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container {
+    @apply px-3;
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 390px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Safe area insets for modern mobile browsers */
+@supports (padding: max(0px)) {
+  .safe-padding-bottom {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+  }
+  
+  .safe-padding-top {
+    padding-top: max(1.5rem, env(safe-area-inset-top, 1.5rem));
+  }
+  
+  .safe-padding-left {
+    padding-left: max(1rem, env(safe-area-inset-left, 1rem));
+  }
+  
+  .safe-padding-right {
+    padding-right: max(1rem, env(safe-area-inset-right, 1rem));
+  }
+}

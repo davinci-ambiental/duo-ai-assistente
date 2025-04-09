@@ -1,0 +1,54 @@
+
+/* Custom styles for the file drop zone */
+.file-drop-zone {
+  @apply border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 md:p-6 
+    text-center flex flex-col items-center justify-center transition-all 
+    hover:border-davinci-teal hover:bg-davinci-lightGray/20 cursor-pointer;
+}
+
+.file-drop-zone.active {
+  @apply border-davinci-teal bg-davinci-lightGray/50;
+}
+
+/* Step indicator styles */
+.step-indicator-line {
+  @apply absolute left-3 sm:left-4 h-full w-0.5 bg-gray-200 -z-10;
+}
+
+.step-connector-complete {
+  @apply bg-davinci-teal;
+}
+
+/* Glass card effect */
+.glass-card {
+  @apply backdrop-blur-md bg-white/90 shadow-lg border border-white/20 rounded-xl;
+}
+
+/* Modern card styles */
+.modern-card {
+  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 overflow-hidden;
+}
+
+/* Enhanced tab styles for PGRSS */
+.pgrss-tabs .TabsTrigger[data-state="active"] {
+  @apply bg-white shadow-md;
+}
+
+/* Better box shadows */
+.shadow-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Scrollbar utilities */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

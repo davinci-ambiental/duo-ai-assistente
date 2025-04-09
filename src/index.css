@@ -1,42 +1,41 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Import modular CSS files */
+@import './styles/fonts.css';
+@import './styles/animations.css';
+@import './styles/layout.css';
+@import './styles/components.css';
 
+/* Theme variables and base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Theme colors and custom properties */
 @layer base {
   :root {
+    /* Light theme colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
     --primary: 174 51% 52%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 83 60% 59%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 174 51% 52%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 174 51% 52%;
-
     --radius: 0.75rem;
 
+    /* Sidebar theme */
     --sidebar-background: 0 0% 95%;
     --sidebar-foreground: 210 5% 38%;
     --sidebar-primary: 174 51% 52%;
@@ -48,34 +47,28 @@
   }
 
   .dark {
+    /* Dark theme colors */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 174 51% 52%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 83 60% 59%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 174 51% 52%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 174 51% 52%;
     
+    /* Sidebar dark theme */
     --sidebar-background: 210 5% 25%;
     --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 174 51% 52%;
@@ -87,6 +80,7 @@
   }
 }
 
+/* Base element styles */
 @layer base {
   * {
     @apply border-border;
@@ -100,181 +94,4 @@
     @apply overflow-x-hidden scroll-smooth text-base;
     font-size: 16px;
   }
-
-  /* Responsive font sizes */
-  @media (max-width: 640px) {
-    html {
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 390px) {
-    html {
-      font-size: 13px;
-    }
-  }
-}
-
-/* Custom styles for the file drop zone */
-.file-drop-zone {
-  @apply border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 md:p-6 
-    text-center flex flex-col items-center justify-center transition-all 
-    hover:border-davinci-teal hover:bg-davinci-lightGray/20 cursor-pointer;
-}
-
-.file-drop-zone.active {
-  @apply border-davinci-teal bg-davinci-lightGray/50;
-}
-
-/* Processing indicator styles */
-.processing-pulse {
-  @apply animate-pulse-subtle text-davinci-teal;
-}
-
-.step-indicator-line {
-  @apply absolute left-3 sm:left-4 h-full w-0.5 bg-gray-200 -z-10;
-}
-
-.step-connector-complete {
-  @apply bg-davinci-teal;
-}
-
-/* Glass card effect */
-.glass-card {
-  @apply backdrop-blur-md bg-white/90 shadow-lg border border-white/20 rounded-xl;
-}
-
-/* Modern card styles */
-.modern-card {
-  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 overflow-hidden;
-}
-
-/* Enhanced tab styles for PGRSS */
-.pgrss-tabs .TabsTrigger[data-state="active"] {
-  @apply bg-white shadow-md;
-}
-
-/* Responsive utilities */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
-  .break-anywhere {
-    overflow-wrap: anywhere;
-    hyphens: auto;
-  }
-
-  .break-all {
-    word-break: break-all;
-  }
-  
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  .line-clamp-1 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-  }
-  
-  .line-clamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
-  
-  .line-clamp-3 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
-
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-
-  .flex-between {
-    @apply flex items-center justify-between;
-  }
-
-  .flex-start {
-    @apply flex items-center justify-start;
-  }
-
-  .flex-end {
-    @apply flex items-center justify-end;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Media queries for responsive design */
-@media (max-width: 640px) {
-  .container {
-    @apply px-3;
-  }
-}
-
-/* Better box shadows */
-.shadow-card {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-.shadow-card-hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-}
-
-/* Safe area insets for modern mobile browsers */
-@supports (padding: max(0px)) {
-  .safe-padding-bottom {
-    padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
-  }
-  
-  .safe-padding-top {
-    padding-top: max(1.5rem, env(safe-area-inset-top, 1.5rem));
-  }
-  
-  .safe-padding-left {
-    padding-left: max(1rem, env(safe-area-inset-left, 1rem));
-  }
-  
-  .safe-padding-right {
-    padding-right: max(1rem, env(safe-area-inset-right, 1rem));
-  }
-}
-
-/* Responsive aspect ratios for images */
-.aspect-video {
-  aspect-ratio: 16 / 9;
-}
-
-.aspect-square {
-  aspect-ratio: 1 / 1;
-}
-
-.aspect-portrait {
-  aspect-ratio: 3 / 4;
 }

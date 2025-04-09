@@ -8,6 +8,10 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import React from 'react';
 
+// Import CSS files
+import './index.css';
+import './App.css';
+
 // Create the query client instance outside of the component
 const queryClient = new QueryClient();
 
