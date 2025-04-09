@@ -59,8 +59,9 @@ const Index = () => {
     });
   };
 
-  // Check if we're on the summary step (after all content steps)
-  const isLastStep = currentStep === steps.length;
+  // Check if we're on the last step or the summary step
+  const isLastStep = currentStep === steps.length - 1;
+  const isSummaryStep = currentStep === steps.length;
 
   return (
     <div className="min-h-screen bg-davinci-lightGray/30 w-full overflow-x-hidden">
@@ -72,12 +73,12 @@ const Index = () => {
           mainContent={
             <div className="space-y-3 sm:space-y-4 md:space-y-6">
               <StepContent
-                isLastStep={isLastStep}
+                isLastStep={isSummaryStep}
                 currentStep={currentStep}
                 totalSteps={steps.length}
                 planType={planType}
               >
-                {!isLastStep && steps[currentStep].component}
+                {!isSummaryStep && steps[currentStep].component}
               </StepContent>
               
               <StepNavigation
