@@ -6,7 +6,6 @@ import CNPJUpload from '@/components/CNPJUpload';
 import LicensesUpload from '@/components/LicensesUpload';
 import CertificatesUpload from '@/components/CertificatesUpload';
 import PhotosUpload from '@/components/PhotosUpload';
-import AIProcessingPanel from '@/components/AIProcessingPanel';
 import ThreeColumnLayout from '@/components/layout/ThreeColumnLayout';
 import StepContent from '@/components/steps/StepContent';
 import StepNavigation from '@/components/navigation/StepNavigation';
@@ -94,14 +93,7 @@ const Index = () => {
               />
             </div>
           }
-          rightSidebar={
-            <AIProcessingPanel 
-              status={steps[currentStep].status === 'completed' ? 'completed' : 'waiting'}
-              fields={[]} 
-              documentType={steps[currentStep].title}
-              className="h-auto"
-            />
-          }
+          // Removed the rightSidebar prop to no longer display the AI Processing Panel
         />
       </main>
     </div>

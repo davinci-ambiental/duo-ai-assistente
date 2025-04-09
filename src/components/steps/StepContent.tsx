@@ -21,7 +21,9 @@ const StepContent: React.FC<StepContentProps> = ({
       {isLastStep ? (
         <SummaryPanel planType={planType} />
       ) : (
-        children
+        <div className="w-full">
+          {children}
+        </div>
       )}
     </div>
   );

@@ -4,7 +4,7 @@ import React from 'react';
 type ThreeColumnLayoutProps = {
   leftSidebar: React.ReactNode;
   mainContent: React.ReactNode;
-  rightSidebar: React.ReactNode;
+  rightSidebar?: React.ReactNode; // Make rightSidebar optional
 };
 
 const ThreeColumnLayout: React.FC<ThreeColumnLayoutProps> = ({
@@ -17,12 +17,15 @@ const ThreeColumnLayout: React.FC<ThreeColumnLayoutProps> = ({
       <div className="md:col-span-3 lg:col-span-2">
         {leftSidebar}
       </div>
-      <div className="md:col-span-6 lg:col-span-8">
+      {/* Adjust the column span when there's no right sidebar */}
+      <div className={`md:col-span-${rightSidebar ? '6 lg:col-span-8' : '9 lg:col-span-10'}`}>
         {mainContent}
       </div>
-      <div className="md:col-span-3 lg:col-span-2">
-        {rightSidebar}
-      </div>
+      {rightSidebar && (
+        <div className="md:col-span-3 lg:col-span-2">
+          {rightSidebar}
+        </div>
+      )}
     </div>
   );
 };
