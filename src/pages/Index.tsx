@@ -1,15 +1,14 @@
-
 import React, { useState, useMemo } from 'react';
 import Header from '@/components/Header';
 import StepIndicator from '@/components/StepIndicator';
 import CNPJUpload from '@/components/CNPJUpload';
 import LicensesUpload from '@/components/LicensesUpload';
 import CertificatesUpload from '@/components/CertificatesUpload';
-import PhotosUpload from '@/components/PhotosUpload';
+import PhotosUpload from '@/components/photos';
 import ThreeColumnLayout from '@/components/layout/ThreeColumnLayout';
 import StepContent from '@/components/steps/StepContent';
 import StepNavigation from '@/components/navigation/StepNavigation';
-import { useStepManager, Step } from '@/hooks/useStepManager';
+import { useStepManager } from '@/hooks/useStepManager';
 import { PlanType } from '@/types/plans';
 import { useToast } from '@/hooks/use-toast';
 
@@ -17,7 +16,6 @@ const Index = () => {
   const [planType, setPlanType] = useState<PlanType>('PGRS');
   const { toast } = useToast();
 
-  // Define the steps based on the current plan type
   const initialSteps = useMemo(() => [
     {
       id: '1',
@@ -53,16 +51,13 @@ const Index = () => {
 
   const { steps, currentStep, handleNextStep, handleSkipStep, handleBackStep } = useStepManager(initialSteps);
 
-  // Function to handle submission (on the last step)
   const handleSubmit = () => {
     toast({
       title: "Sucesso!",
       description: "Formulário enviado com sucesso!",
     });
-    // Here you could add API calls to submit the form data
   };
 
-  // Check if current step is the last one
   const isLastStep = currentStep === steps.length - 1;
 
   return (
@@ -93,7 +88,6 @@ const Index = () => {
               />
             </div>
           }
-          // Já removido o rightSidebar conforme solicitado anteriormente
         />
       </main>
     </div>
