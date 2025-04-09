@@ -12,7 +12,9 @@ import {
   RecycleIcon, 
   Trash2Icon, 
   ScissorsIcon, 
-  DoorClosedIcon 
+  DoorClosedIcon,
+  LightbulbIcon,
+  Wind
 } from 'lucide-react';
 
 const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
@@ -76,23 +78,45 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
     }
   };
 
-  // Get the appropriate icon for PGRSS waste types
+  // Get the appropriate icon for waste types
   const getWasteTypeIcon = (itemId: string) => {
-    switch (itemId) {
-      case 'group-a':
-        return <BiohazardIcon className="h-5 w-5 text-red-600" />;
-      case 'group-b':
-        return <FlaskConicalIcon className="h-5 w-5 text-orange-600" />;
-      case 'group-d-recyclable':
-        return <RecycleIcon className="h-5 w-5 text-blue-600" />;
-      case 'group-d-non-recyclable':
-        return <Trash2Icon className="h-5 w-5 text-gray-600" />;
-      case 'group-e':
-        return <ScissorsIcon className="h-5 w-5 text-yellow-600" />;
-      case 'door':
-        return <DoorClosedIcon className="h-5 w-5 text-purple-600" />;
-      default:
-        return null;
+    if (planType === 'PGRSS') {
+      switch (itemId) {
+        case 'group-a':
+          return <BiohazardIcon className="h-5 w-5 text-red-600" />;
+        case 'group-b':
+          return <FlaskConicalIcon className="h-5 w-5 text-orange-600" />;
+        case 'group-d-recyclable':
+          return <RecycleIcon className="h-5 w-5 text-blue-600" />;
+        case 'group-d-non-recyclable':
+          return <Trash2Icon className="h-5 w-5 text-gray-600" />;
+        case 'group-e':
+          return <ScissorsIcon className="h-5 w-5 text-yellow-600" />;
+        case 'door':
+          return <DoorClosedIcon className="h-5 w-5 text-purple-600" />;
+        case 'internal':
+          return <Trash2Icon className="h-5 w-5 text-purple-600" />;
+        case 'walls-floor':
+          return <InfoIcon className="h-5 w-5 text-purple-600" />;
+        case 'lighting':
+          return <LightbulbIcon className="h-5 w-5 text-purple-600" />;
+        case 'ventilation':
+          return <Wind className="h-5 w-5 text-purple-600" />;
+        default:
+          return null;
+      }
+    } else {
+      // PGRS icons
+      switch (itemId) {
+        case 'recyclable':
+          return <RecycleIcon className="h-5 w-5 text-blue-600" />;
+        case 'non-recyclable':
+          return <Trash2Icon className="h-5 w-5 text-gray-600" />;
+        case 'hazardous':
+          return <FlaskConicalIcon className="h-5 w-5 text-red-600" />;
+        default:
+          return null;
+      }
     }
   };
 
@@ -159,7 +183,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
               <PhotoCategory 
                 category={category}
                 onFilesUploaded={handleFilesUploaded}
-                getItemIcon={planType === 'PGRSS' ? getWasteTypeIcon : undefined}
+                getItemIcon={getWasteTypeIcon}
                 planType={planType}
               />
             </TabsContent>

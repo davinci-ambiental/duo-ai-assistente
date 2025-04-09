@@ -51,7 +51,8 @@ const Index = () => {
         ? 'Fotos das lixeiras de resíduos recicláveis, não recicláveis e perigosos'
         : 'Fotos das lixeiras específicas para resíduos de serviços de saúde',
       status: 'pending' as const,
-      component: <PhotosUpload planType={planType} key={`photos-${planType}`} />
+      // Add a unique key based on planType to force re-rendering when planType changes
+      component: <PhotosUpload planType={planType} key={`photos-upload-${planType}`} />
     }
   ], [planType]);
 
