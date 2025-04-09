@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Header from '@/components/Header';
 import StepIndicator from '@/components/StepIndicator';
 import CNPJUpload from '@/components/CNPJUpload';
@@ -16,6 +16,11 @@ import { useToast } from '@/hooks/use-toast';
 const Index = () => {
   const [planType, setPlanType] = useState<PlanType>('PGRS');
   const { toast } = useToast();
+
+  // Debug planType changes
+  useEffect(() => {
+    console.log("Index - Current plan type changed to:", planType);
+  }, [planType]);
 
   const initialSteps = useMemo(() => [
     {
@@ -46,7 +51,7 @@ const Index = () => {
         ? 'Fotos das lixeiras de resíduos recicláveis, não recicláveis e perigosos'
         : 'Fotos das lixeiras específicas para resíduos de serviços de saúde',
       status: 'pending' as const,
-      component: <PhotosUpload planType={planType} />
+      component: <PhotosUpload planType={planType} key={`photos-${planType}`} />
     }
   ], [planType]);
 

@@ -5,15 +5,26 @@ import { PhotosUploadProps, PhotoCategory as PhotoCategoryType } from './types';
 import PhotoCategory from './PhotoCategory';
 import { getCategoriesByPlanType, getSimulatedAnalysisResult } from './photosUtils';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { InfoIcon, BiohazardIcon, FlaskConicalIcon, RecycleIcon, Trash2Icon, ScissorsIcon, DoorClosedIcon } from 'lucide-react';
+import { 
+  InfoIcon, 
+  BiohazardIcon, 
+  FlaskConicalIcon, 
+  RecycleIcon, 
+  Trash2Icon, 
+  ScissorsIcon, 
+  DoorClosedIcon 
+} from 'lucide-react';
 
 const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
   const [categories, setCategories] = useState<PhotoCategoryType[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("");
 
+  console.log("PhotosUpload - Current plan type:", planType); // Add logging to debug
+
   // Define categories based on plan type
   useEffect(() => {
     const initialCategories = getCategoriesByPlanType(planType);
+    console.log("PhotosUpload - Categories loaded:", initialCategories); // Add logging
     setCategories(initialCategories);
     setActiveCategory(initialCategories[0]?.id || '');
   }, [planType]);

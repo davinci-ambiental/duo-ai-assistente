@@ -3,6 +3,8 @@ import { PhotoCategory } from './types';
 
 // Get categories based on plan type
 export const getCategoriesByPlanType = (planType: 'PGRS' | 'PGRSS'): PhotoCategory[] => {
+  console.log("getCategoriesByPlanType called with planType:", planType); // Debugging
+  
   if (planType === 'PGRS') {
     return [
       {
