@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Check, AlertCircle, Loader2, BrainCircuit } from 'lucide-react';
+import { Check, AlertCircle, Loader2, BrainCircuit, XCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export type ProcessingField = {
@@ -8,6 +8,7 @@ export type ProcessingField = {
   name: string;
   status: 'pending' | 'processing' | 'completed' | 'error';
   value?: string;
+  errorMessage?: string;
 };
 
 export type ProcessingStatus = 'waiting' | 'processing' | 'completed' | 'error';
@@ -27,7 +28,12 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
 }) => {
   return (
     <div className={cn("modern-card overflow-hidden shadow-card hover:shadow-card-hover", className)}>
-      <div className="bg-gradient-to-r from-davinci-teal to-davinci-lightGreen p-3">
+      <div className={cn(
+        "p-3",
+        status === 'error' 
+          ? "bg-gradient-to-r from-red-500 to-red-600" 
+          : "bg-gradient-to-r from-davinci-teal to-davinci-lightGreen"
+      )}>
         <div className="flex items-center space-x-2">
           <div className="bg-white/90 p-1.5 rounded-full">
             <BrainCircuit className={cn(
@@ -77,7 +83,7 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
             {status === 'waiting' && 'Envie os documentos para iniciar a extração de informações.'}
             {status === 'processing' && 'Nossa IA está analisando e extraindo os dados dos documentos enviados.'}
             {status === 'completed' && 'Todos os dados foram extraídos com sucesso dos documentos.'}
-            {status === 'error' && 'Ocorreu um erro durante o processamento. Por favor, verifique os documentos e tente novamente.'}
+            {status === 'error' && 'Falha ao extrair as informações. Os documentos podem estar ilegíveis ou em formato não suportado.'}
           </p>
         </div>
         
@@ -105,12 +111,22 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
                         </span>
                       )}
                       {field.status === 'completed' && 'Extraído'}
-                      {field.status === 'error' && 'Erro'}
+                      {field.status === 'error' && (
+                        <span className="flex items-center">
+                          <XCircle className="h-2 w-2 mr-1" />
+                          Falha
+                        </span>
+                      )}
                     </span>
                   </div>
                   {field.value && (
                     <p className="mt-1 text-xs text-davinci-silver break-words line-clamp-3">
                       {field.value}
+                    </p>
+                  )}
+                  {field.status === 'error' && field.errorMessage && (
+                    <p className="mt-1 text-xs text-red-500 break-words line-clamp-3">
+                      {field.errorMessage}
                     </p>
                   )}
                 </div>
