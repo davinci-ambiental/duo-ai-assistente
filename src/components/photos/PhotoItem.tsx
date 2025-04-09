@@ -26,7 +26,7 @@ const PhotoItem: React.FC<PhotoItemProps> = ({
   
   return (
     <div key={item.id} className={cn(
-      "modern-card p-4",
+      "modern-card p-4 shadow-md hover:shadow-lg transition-all duration-300",
       isPGRSS && "border-l-4",
       isPGRSS && categoryId === 'waste-bins' && item.id === 'group-a' && "border-l-red-500",
       isPGRSS && categoryId === 'waste-bins' && item.id === 'group-b' && "border-l-orange-500",
@@ -44,7 +44,7 @@ const PhotoItem: React.FC<PhotoItemProps> = ({
           <p className="text-sm text-davinci-silver mt-1">{item.description}</p>
           
           {item.status === 'completed' && item.value && (
-            <div className="mt-3 p-3 bg-green-50 border border-green-100 rounded-md">
+            <div className="mt-3 p-3 bg-green-50 border border-green-100 rounded-md shadow-sm">
               <p className="text-sm text-green-700">
                 <span className="font-semibold">Análise:</span> {item.value}
               </p>
@@ -52,7 +52,7 @@ const PhotoItem: React.FC<PhotoItemProps> = ({
           )}
           
           {item.status === 'processing' && (
-            <div className="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-md">
+            <div className="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-md shadow-sm">
               <p className="text-sm text-blue-700 flex items-center">
                 <span className="mr-2 animate-spin">⟳</span>
                 Analisando imagem...
@@ -70,7 +70,7 @@ const PhotoItem: React.FC<PhotoItemProps> = ({
             icon={<Image className="h-8 w-8 text-davinci-teal" />}
             onFilesUploaded={(files) => onFilesUploaded(categoryId, item.id, files)}
             className={cn(
-              "p-3 border border-dashed border-davinci-teal/50 bg-white",
+              "p-3 border border-dashed shadow-inner border-davinci-teal/50 bg-white hover:bg-davinci-lightGray/10 transition-all duration-300",
               isPGRSS && categoryId === 'waste-bins' && item.id === 'group-a' && "border-red-300 hover:border-red-500",
               isPGRSS && categoryId === 'waste-bins' && item.id === 'group-b' && "border-orange-300 hover:border-orange-500",
               isPGRSS && categoryId === 'waste-bins' && item.id === 'group-d-recyclable' && "border-blue-300 hover:border-blue-500",

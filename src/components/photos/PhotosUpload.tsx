@@ -15,6 +15,7 @@ import {
   LightbulbIcon,
   Wind
 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
   const [categories, setCategories] = useState<PhotoCategoryType[]>([]);
@@ -129,6 +130,9 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
     }
   };
 
+  // Determine if this is PGRSS to apply special styles
+  const isPGRSS = planType === 'PGRSS';
+
   return (
     <div className="space-y-4">
       <div className="text-center mb-6">
@@ -162,12 +166,20 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
 
       {categories.length > 0 && (
         <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
-          <TabsList className="w-full flex mb-6 bg-davinci-lightGray/30">
+          <TabsList className={cn(
+            "w-full flex mb-6 rounded-lg shadow-md", 
+            isPGRSS 
+              ? "bg-gradient-to-r from-davinci-lightGray/70 to-davinci-lightGray/40 p-1" 
+              : "bg-davinci-lightGray/30"
+          )}>
             {categories.map((category) => (
               <TabsTrigger 
                 key={category.id} 
                 value={category.id}
-                className="flex-1 py-2 px-3 text-sm"
+                className={cn(
+                  "flex-1 py-2.5 px-4 text-sm font-medium transition-all duration-200",
+                  isPGRSS && "data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md"
+                )}
               >
                 {category.title}
               </TabsTrigger>
@@ -175,7 +187,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
           </TabsList>
 
           {categories.map((category) => (
-            <TabsContent key={category.id} value={category.id}>
+            <TabsContent key={category.id} value={category.id} className="animate-fade-in">
               <div className="mb-4">
                 <h3 className="text-md font-medium text-davinci-darkGray">{category.description}</h3>
                 {planType === 'PGRSS' && category.id === 'waste-bins' && (
@@ -200,7 +212,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
         </Tabs>
       )}
       
-      <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+      <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg shadow-md">
         <p className="text-sm text-yellow-700">
           <strong>Importante:</strong> Envie fotos nítidas e bem iluminadas. Nossa IA necessita de imagens claras para 
           analisar corretamente os elementos de conformidade.

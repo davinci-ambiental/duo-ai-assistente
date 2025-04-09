@@ -135,6 +135,11 @@
   @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100;
 }
 
+/* Enhanced tab styles for PGRSS */
+.pgrss-tabs .TabsTrigger[data-state="active"] {
+  @apply bg-white shadow-md;
+}
+
 /* Responsive utilities */
 @layer utilities {
   .text-balance {
@@ -143,6 +148,21 @@
   
   .break-anywhere {
     overflow-wrap: anywhere;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
