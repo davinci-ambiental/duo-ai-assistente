@@ -22,7 +22,7 @@ const StepNavigation: React.FC<StepNavigationProps> = ({
   onSubmit,
 }) => {
   const isFirstStep = currentStep === 0;
-  const isLastStep = currentStep === totalSteps - 1;
+  const isLastStep = currentStep === totalSteps;
   const isMobile = useIsMobile();
 
   return (

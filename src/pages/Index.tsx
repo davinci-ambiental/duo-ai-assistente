@@ -59,8 +59,8 @@ const Index = () => {
     });
   };
 
-  // Fix: This is where the issue is - we were incorrectly determining the last step
-  const isLastStep = currentStep === steps.length - 1;
+  // The problem is here - we need to show the summary only after the photos step
+  const isLastStep = currentStep === steps.length;
 
   return (
     <div className="min-h-screen bg-davinci-lightGray/30 w-full overflow-x-hidden">
@@ -77,7 +77,7 @@ const Index = () => {
                 totalSteps={steps.length}
                 planType={planType}
               >
-                {steps[currentStep].component}
+                {!isLastStep && steps[currentStep].component}
               </StepContent>
               
               <StepNavigation
