@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { PhotosUploadProps, PhotoCategory as PhotoCategoryType } from './types';
@@ -13,7 +14,8 @@ import {
   ScissorsIcon, 
   DoorClosedIcon,
   LightbulbIcon,
-  Wind
+  Wind,
+  Skull
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -95,7 +97,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
         case 'group-a':
           return <BiohazardIcon className="h-5 w-5 text-red-600" />;
         case 'group-b':
-          return <FlaskConicalIcon className="h-5 w-5 text-orange-600" />;
+          return <Skull className="h-5 w-5 text-red-600" />;
         case 'group-d-recyclable':
           return <RecycleIcon className="h-5 w-5 text-blue-600" />;
         case 'group-d-non-recyclable':
@@ -123,7 +125,7 @@ const PhotosUpload: React.FC<PhotosUploadProps> = ({ planType }) => {
         case 'non-recyclable':
           return <Trash2Icon className="h-5 w-5 text-gray-600" />;
         case 'hazardous':
-          return <FlaskConicalIcon className="h-5 w-5 text-red-600" />;
+          return <Skull className="h-5 w-5 text-red-600" />;
         default:
           return null;
       }
