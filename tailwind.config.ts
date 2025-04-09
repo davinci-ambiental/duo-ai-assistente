@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				inter: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -63,25 +65,24 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-                // Custom colors for the PGRS/PGRSS system
                 pgrs: {
-                    primary: '#10B981',    // Green
-                    secondary: '#34D399',  // Light green
-                    accent: '#3B82F6',     // Blue for AI/tech elements
-                    success: '#059669',    // Dark green for success states
-                    warning: '#F59E0B',    // Amber for warnings
-                    error: '#EF4444',      // Red for errors
-                    light: '#ECFDF5',      // Very light green for backgrounds
-                    dark: '#064E3B',       // Very dark green for text
+                    primary: '#10B981',
+                    secondary: '#34D399',
+                    accent: '#3B82F6',
+                    success: '#059669',
+                    warning: '#F59E0B',
+                    error: '#EF4444',
+                    light: '#ECFDF5',
+                    dark: '#064E3B',
                 },
                 waste: {
-                    recyclable: '#2DD4BF',     // Teal for recyclable waste
-                    nonrecyclable: '#4B5563',  // Gray for non-recyclable
-                    hazardous: '#F59E0B',      // Amber for hazardous
-                    groupA: '#EF4444',         // Red for Group A (infectious)
-                    groupB: '#F59E0B',         // Amber for Group B (chemical)
-                    groupD: '#2DD4BF',         // Teal for Group D (recyclable)
-                    groupE: '#6366F1',         // Indigo for Group E (sharps)
+                    recyclable: '#2DD4BF',
+                    nonrecyclable: '#4B5563',
+                    hazardous: '#F59E0B',
+                    groupA: '#EF4444',
+                    groupB: '#F59E0B',
+                    groupD: '#2DD4BF',
+                    groupE: '#6366F1',
                 }
 			},
 			borderRadius: {
