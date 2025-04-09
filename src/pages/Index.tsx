@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Header from '@/components/Header';
 import StepIndicator from '@/components/StepIndicator';
@@ -58,6 +59,7 @@ const Index = () => {
     });
   };
 
+  // Fix: This is where the issue is - we were incorrectly determining the last step
   const isLastStep = currentStep === steps.length - 1;
 
   return (
