@@ -71,6 +71,7 @@ const CertificatesUpload: React.FC = () => {
   };
 
   return (
+    // Mantém a classe Tailwind grid para compatibilidade, mas adiciona a classe CSS pura
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <DocumentUpload
         title="Certificados de Destinação Final (CDF)"
@@ -89,12 +90,13 @@ const CertificatesUpload: React.FC = () => {
         />
         
         {processingStatus === 'error' && (
-          <div className="flex flex-col gap-3 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <div className="flex items-start gap-2">
-              <AlertCircle className="h-5 w-5 text-red-500 mt-0.5" />
-              <div>
-                <h3 className="text-sm font-medium text-red-700">Falha no processamento</h3>
-                <p className="text-xs text-red-600 mt-1">
+          // Usando a classe CSS pura error-box
+          <div className="error-box">
+            <div className="error-box-header">
+              <AlertCircle className="error-icon" />
+              <div className="error-content">
+                <h3 className="error-title">Falha no processamento</h3>
+                <p className="error-description">
                   A IA não conseguiu extrair as informações dos certificados. Isso pode ocorrer devido à baixa qualidade das imagens, texto não reconhecível ou formato incompatível.
                 </p>
               </div>
