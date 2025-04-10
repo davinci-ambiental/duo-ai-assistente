@@ -1,11 +1,1 @@
-
-/* 
- * Este arquivo será mantido mínimo para compatibilidade com a transição do Tailwind CSS para CSS puro.
- * Gradualmente, os estilos estão sendo movidos para src/styles/main.css que contém CSS puro.
- *
- * A transição completa requer a reescrita de todos os componentes que usam classes Tailwind.
- * Por enquanto, mantemos ambas as abordagens funcionando simultaneamente.
- */
-
-/* Qualquer estilo específico da aplicação que não faz parte do sistema Tailwind pode ser adicionado aqui */
-
+/* This file is kept minimal as we're using Tailwind CSS for styling */
