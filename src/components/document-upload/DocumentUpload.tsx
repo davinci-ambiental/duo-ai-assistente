@@ -65,31 +65,27 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({
   }, []);
 
   return (
-    <div className={cn("document-card", className)}>
-      <div className="document-card-header">
-        <h2 className="text-xl font-semibold text-davinci-darkGray mb-2">{title}</h2>
-        <p className="text-davinci-silver mb-6">{description}</p>
-      </div>
+    <div className={cn("modern-card p-6", className)}>
+      <h2 className="text-xl font-semibold text-davinci-darkGray mb-2">{title}</h2>
+      <p className="text-davinci-silver mb-6">{description}</p>
       
-      <div className="p-6">
-        <DropZone
-          onFilesSelected={handleFiles}
-          acceptedFileTypes={acceptedFileTypes}
-          icon={icon}
-        />
-        
-        {files.length > 0 && (
-          <div className="space-y-3 mt-6">
-            {files.map((fileObj) => (
-              <FileItem 
-                key={fileObj.id} 
-                fileObj={fileObj} 
-                onRemove={removeFile} 
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <DropZone
+        onFilesSelected={handleFiles}
+        acceptedFileTypes={acceptedFileTypes}
+        icon={icon}
+      />
+      
+      {files.length > 0 && (
+        <div className="space-y-3 mt-6">
+          {files.map((fileObj) => (
+            <FileItem 
+              key={fileObj.id} 
+              fileObj={fileObj} 
+              onRemove={removeFile} 
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

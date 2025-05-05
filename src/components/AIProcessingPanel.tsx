@@ -27,12 +27,12 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
   className,
 }) => {
   return (
-    <div className={cn("processing-panel", className)}>
+    <div className={cn("modern-card overflow-hidden shadow-card hover:shadow-card-hover", className)}>
       <div className={cn(
-        "processing-header",
-        status === 'error' ? "processing-header-error" : 
-        status === 'waiting' ? "processing-header-waiting" : 
-        "processing-header-success"
+        "p-3",
+        status === 'error' 
+          ? "bg-gradient-to-r from-red-500 to-red-600" 
+          : "bg-gradient-to-r from-davinci-teal to-davinci-lightGreen"
       )}>
         <div className="flex items-center space-x-2">
           <div className="bg-white/90 p-1.5 rounded-full">
@@ -50,29 +50,29 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
         </div>
       </div>
       
-      <div className="processing-content">
+      <div className="p-3 sm:p-4">
         <div className="mb-3">
           <div className="flex flex-wrap items-center gap-2 mb-1">
             <p className="text-xs font-medium text-davinci-darkGray">Status:</p>
             {status === 'waiting' && (
-              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-gradient-to-r from-davinci-lightGray to-davinci-lightGray/70 text-white">
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-davinci-lightGray text-davinci-silver">
                 Aguardando arquivos
               </span>
             )}
             {status === 'processing' && (
-              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-gradient-to-r from-blue-400 to-blue-500 text-white flex items-center">
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-100 text-blue-700 flex items-center">
                 <Loader2 className="h-3 w-3 mr-1 animate-spin" />
                 Processando {documentType}
               </span>
             )}
             {status === 'completed' && (
-              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-gradient-to-r from-green-400 to-green-500 text-white flex items-center">
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-green-100 text-green-700 flex items-center">
                 <Check className="h-3 w-3 mr-1" />
                 Processamento completo
               </span>
             )}
             {status === 'error' && (
-              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-gradient-to-r from-red-400 to-red-500 text-white flex items-center">
+              <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-700 flex items-center">
                 <AlertCircle className="h-3 w-3 mr-1" />
                 Erro no processamento
               </span>
@@ -91,17 +91,17 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
           <div className="space-y-2">
             <h3 className="text-xs font-medium text-davinci-darkGray">Informações extraídas:</h3>
             
-            <div className="bg-gradient-to-r from-davinci-lightGray/20 to-davinci-lightGray/5 rounded-lg p-2 divide-y divide-gray-100 shadow-inner">
+            <div className="bg-davinci-lightGray/30 rounded-lg p-2 divide-y divide-gray-100">
               {fields.map((field) => (
                 <div key={field.id} className="py-2 first:pt-0 last:pb-0">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-xs font-medium text-davinci-darkGray">{field.name}:</span>
                     <span className={cn(
                       "text-xs font-medium px-1.5 py-0.5 rounded-full whitespace-nowrap",
-                      field.status === 'pending' && "bg-gradient-to-r from-gray-200 to-gray-300 text-gray-700",
-                      field.status === 'processing' && "bg-gradient-to-r from-blue-200 to-blue-300 text-blue-800",
-                      field.status === 'completed' && "bg-gradient-to-r from-green-200 to-green-300 text-green-800",
-                      field.status === 'error' && "bg-gradient-to-r from-red-200 to-red-300 text-red-800"
+                      field.status === 'pending' && "bg-davinci-lightGray text-davinci-silver",
+                      field.status === 'processing' && "bg-blue-100 text-blue-700",
+                      field.status === 'completed' && "bg-green-100 text-green-700",
+                      field.status === 'error' && "bg-red-100 text-red-700"
                     )}>
                       {field.status === 'pending' && 'Pendente'}
                       {field.status === 'processing' && (

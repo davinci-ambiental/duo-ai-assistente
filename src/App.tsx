@@ -12,6 +12,7 @@ import React from 'react';
 // Import CSS files
 import './index.css';
 import './App.css';
+import './styles/main.css'; // Importando o novo arquivo CSS puro
 
 // Create the query client instance outside of the component
 const queryClient = new QueryClient();

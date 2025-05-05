@@ -24,55 +24,23 @@
   @apply backdrop-blur-md bg-white/90 shadow-lg border border-white/20 rounded-xl;
 }
 
-/* Modern card styles - Enhanced with better shadows and hover effects */
+/* Modern card styles */
 .modern-card {
-  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 
-    border border-gray-100 overflow-hidden relative;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.modern-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
+  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 overflow-hidden;
 }
 
 /* Enhanced tab styles for PGRSS */
 .pgrss-tabs .TabsTrigger[data-state="active"] {
   @apply bg-white shadow-md;
-  position: relative;
-  overflow: hidden;
-}
-
-.pgrss-tabs .TabsTrigger[data-state="active"]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(90deg, #4FBDAD, #B4D45A);
 }
 
 /* Better box shadows */
 .shadow-card {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .shadow-card-hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Gradient card headers */
-.card-header-gradient {
-  background: linear-gradient(90deg, rgba(79, 189, 173, 0.9), rgba(180, 212, 90, 0.9));
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card-header-gradient-error {
-  background: linear-gradient(90deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9));
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* Scrollbar utilities */
@@ -83,56 +51,4 @@
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
-}
-
-/* Enhanced document card */
-.document-card {
-  @apply bg-white rounded-xl transition-all duration-300 overflow-hidden relative;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.document-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
-.document-card-header {
-  @apply p-4;
-  background: linear-gradient(90deg, rgba(79, 189, 173, 0.15), rgba(180, 212, 90, 0.15));
-  border-bottom: 1px solid rgba(79, 189, 173, 0.2);
-}
-
-/* Processing panel styles */
-.processing-panel {
-  background: linear-gradient(145deg, #ffffff, #f5f5f5);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.processing-header {
-  border-radius: 12px 12px 0 0;
-  padding: 12px 16px;
-}
-
-.processing-header-success {
-  background: linear-gradient(90deg, #4FBDAD, #B4D45A);
-  color: white;
-}
-
-.processing-header-error {
-  background: linear-gradient(90deg, #EF4444, #DC2626);
-  color: white;
-}
-
-.processing-header-waiting {
-  background: linear-gradient(90deg, #9A9A9A, #5A6268);
-  color: white;
-}
-
-.processing-content {
-  padding: 16px;
-  background: white;
-  border-radius: 0 0 12px 12px;
 }
