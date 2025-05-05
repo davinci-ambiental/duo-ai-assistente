@@ -14,12 +14,12 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6">
       <div className="text-center mb-3 sm:mb-4 md:mb-6">
-        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-davinci-darkGray">Resumo da Submissão</h2>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-davinci-darkGray to-davinci-darkGray/80 bg-clip-text text-transparent">Resumo da Submissão</h2>
         <p className="text-xs sm:text-sm md:text-base text-davinci-silver">Verifique as informações abaixo antes de enviar</p>
       </div>
 
-      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
-        <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 border-l-4 border-l-davinci-teal">
+        <CardHeader className="p-2 sm:p-3 md:p-4 bg-gradient-to-r from-davinci-lightGray/30 to-davinci-lightGray/10">
           <CardTitle className="text-sm sm:text-base md:text-lg">Informações do Estabelecimento</CardTitle>
           <CardDescription className="text-xs md:text-sm">Dados cadastrais extraídos do CNPJ</CardDescription>
         </CardHeader>
@@ -41,8 +41,8 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         </CardContent>
       </Card>
 
-      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
-        <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 border-l-4 border-l-davinci-secondary">
+        <CardHeader className="p-2 sm:p-3 md:p-4 bg-gradient-to-r from-davinci-lightGray/30 to-davinci-lightGray/10">
           <CardTitle className="text-sm sm:text-base md:text-lg">Licenças Ambientais</CardTitle>
           <CardDescription className="text-xs md:text-sm">Documentos enviados para validação</CardDescription>
         </CardHeader>
@@ -51,8 +51,8 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         </CardContent>
       </Card>
 
-      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
-        <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 border-l-4 border-l-davinci-teal">
+        <CardHeader className="p-2 sm:p-3 md:p-4 bg-gradient-to-r from-davinci-lightGray/30 to-davinci-lightGray/10">
           <CardTitle className="text-sm sm:text-base md:text-lg">Certificados de Destinação</CardTitle>
           <CardDescription className="text-xs md:text-sm">Documentos dos últimos 12 meses</CardDescription>
         </CardHeader>
@@ -61,8 +61,8 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         </CardContent>
       </Card>
 
-      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300">
-        <CardHeader className="p-2 sm:p-3 md:p-4 bg-davinci-lightGray/30">
+      <Card className="overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 border-l-4 border-l-davinci-secondary">
+        <CardHeader className="p-2 sm:p-3 md:p-4 bg-gradient-to-r from-davinci-lightGray/30 to-davinci-lightGray/10">
           <CardTitle className="text-sm sm:text-base md:text-lg">
             {isPGRS ? 'Fotos das Lixeiras' : 'Fotos das Lixeiras e Abrigo Temporário'}
           </CardTitle>
@@ -79,7 +79,7 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         </CardContent>
       </Card>
 
-      <div className="mt-3 sm:mt-4 md:mt-6 p-2 sm:p-3 md:p-4 bg-yellow-50 border border-yellow-200 rounded-lg shadow-card">
+      <div className="mt-3 sm:mt-4 md:mt-6 p-4 bg-gradient-to-r from-yellow-50 to-yellow-100 border border-yellow-200 rounded-lg shadow-md">
         <p className="text-xs md:text-sm text-yellow-700">
           <strong>Importante:</strong> Ao clicar em "Enviar", você confirma que todas as informações fornecidas são verdadeiras.
         </p>
