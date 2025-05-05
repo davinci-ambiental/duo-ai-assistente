@@ -89,11 +89,13 @@ const CertificatesUpload: React.FC = () => {
         />
         
         {processingStatus === 'error' && (
-          <div className="flex flex-col gap-3 p-3 bg-red-50 border border-red-200 rounded-lg">
-            <div className="flex items-start gap-2">
-              <AlertCircle className="h-5 w-5 text-red-500 mt-0.5" />
+          <div className="flex flex-col gap-3 p-4 bg-gradient-to-r from-red-50 to-red-100 border border-red-200 rounded-lg shadow-sm">
+            <div className="flex items-start gap-3">
+              <div className="bg-red-100 p-1.5 rounded-full">
+                <AlertCircle className="h-5 w-5 text-red-500" />
+              </div>
               <div>
-                <h3 className="text-sm font-medium text-red-700">Falha no processamento</h3>
+                <h3 className="text-sm font-semibold text-red-700">Falha no processamento</h3>
                 <p className="text-xs text-red-600 mt-1">
                   A IA não conseguiu extrair as informações dos certificados. Isso pode ocorrer devido à baixa qualidade das imagens, texto não reconhecível ou formato incompatível.
                 </p>
@@ -102,7 +104,7 @@ const CertificatesUpload: React.FC = () => {
             <Button 
               variant="outline" 
               size="sm" 
-              className="self-end bg-white text-red-600 border-red-200 hover:bg-red-50 hover:text-red-700"
+              className="self-end bg-white text-red-600 border-red-200 hover:bg-red-50 hover:text-red-700 shadow-sm"
               onClick={handleRetry}
             >
               Tentar novamente
