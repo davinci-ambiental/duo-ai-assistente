@@ -27,7 +27,7 @@ const AIProcessingPanel: React.FC<AIProcessingPanelProps> = ({
   className,
 }) => {
   return (
-    <div className={cn("processing-panel border-l-4 border-l-indigo-500 shadow-md", className)}>
+    <div className={cn("processing-panel border-t-4 border-t-davinci-teal shadow-md", className)}>
       <div className={cn(
         "processing-header",
         status === 'error' ? "processing-header-error" : 
