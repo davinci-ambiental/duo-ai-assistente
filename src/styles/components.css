@@ -1,9 +1,11 @@
 
+
 /* Custom styles for the file drop zone */
 .file-drop-zone {
   @apply border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 md:p-6 
     text-center flex flex-col items-center justify-center transition-all 
-    hover:border-davinci-teal hover:bg-davinci-lightGray/20 cursor-pointer;
+    hover:border-davinci-teal hover:bg-davinci-lightGray/20 cursor-pointer
+    border-l-4 border-l-teal-500 shadow-md;
 }
 
 .file-drop-zone.active {
@@ -21,12 +23,14 @@
 
 /* Glass card effect */
 .glass-card {
-  @apply backdrop-blur-md bg-white/90 shadow border border-white/20 rounded-xl;
+  @apply backdrop-blur-md bg-white/90 shadow border border-white/20 rounded-xl
+    border-l-4 border-l-cyan-500;
 }
 
 /* Modern card styles */
 .modern-card {
-  @apply bg-white rounded-xl shadow border border-gray-100 overflow-hidden relative;
+  @apply bg-white rounded-xl shadow border border-gray-100 overflow-hidden relative
+    border-l-4 border-l-blue-500;
 }
 
 /* Enhanced tab styles for PGRSS */
@@ -51,7 +55,8 @@
 
 /* Enhanced document card */
 .document-card {
-  @apply bg-white rounded-xl border border-gray-100 overflow-hidden relative;
+  @apply bg-white rounded-xl border border-gray-100 overflow-hidden relative
+    border-l-4 border-l-emerald-500 shadow-md;
 }
 
 .document-card-header {
@@ -92,3 +97,4 @@
   background: white;
   border-radius: 0 0 12px 12px;
 }
+
