@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Image } from 'lucide-react';
 import DocumentUpload from '@/components/document-upload';
@@ -26,13 +25,14 @@ const PhotoItem: React.FC<PhotoItemProps> = ({
   return (
     <div key={item.id} className={cn(
       "modern-card p-3 sm:p-4 shadow-md hover:shadow-lg transition-all duration-300",
-      isPGRSS && "border-l-4",
+      isPGRSS && "border-l-4 border-t-0",
       isPGRSS && categoryId === 'waste-bins' && item.id === 'group-a' && "border-l-red-500",
       isPGRSS && categoryId === 'waste-bins' && item.id === 'group-b' && "border-l-orange-500",
       isPGRSS && categoryId === 'waste-bins' && item.id === 'group-d-recyclable' && "border-l-blue-500",
       isPGRSS && categoryId === 'waste-bins' && item.id === 'group-d-non-recyclable' && "border-l-gray-500",
       isPGRSS && categoryId === 'waste-bins' && item.id === 'group-e' && "border-l-yellow-500",
-      isPGRSS && categoryId === 'temp-shelter' && "border-l-purple-500"
+      isPGRSS && categoryId === 'temp-shelter' && "border-l-purple-500",
+      !isPGRSS && "border-l-4 border-l-davinci-teal border-t-0"
     )}>
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
         <div className="flex-grow break-words">
