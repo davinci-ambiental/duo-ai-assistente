@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { ColoredCard, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { PlanType } from '@/types/plans';
 
 type SummaryPanelProps = {
@@ -18,7 +18,7 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         <p className="text-xs sm:text-sm md:text-base text-davinci-silver">Verifique as informações abaixo antes de enviar</p>
       </div>
 
-      <Card className="border-l-4 border-l-davinci-teal">
+      <ColoredCard borderColor="green">
         <CardHeader className="bg-gray-50">
           <CardTitle className="text-sm sm:text-base md:text-lg">Informações do Estabelecimento</CardTitle>
           <CardDescription className="text-xs md:text-sm">Dados cadastrais extraídos do CNPJ</CardDescription>
@@ -39,9 +39,9 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
             </li>
           </ul>
         </CardContent>
-      </Card>
+      </ColoredCard>
 
-      <Card className="border-l-4 border-l-davinci-secondary">
+      <ColoredCard borderColor="blue">
         <CardHeader className="bg-gray-50">
           <CardTitle className="text-sm sm:text-base md:text-lg">Licenças Ambientais</CardTitle>
           <CardDescription className="text-xs md:text-sm">Documentos enviados para validação</CardDescription>
@@ -49,9 +49,9 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         <CardContent>
           <p className="text-xs md:text-sm text-davinci-silver">2 documentos enviados</p>
         </CardContent>
-      </Card>
+      </ColoredCard>
 
-      <Card className="border-l-4 border-l-davinci-teal">
+      <ColoredCard borderColor="teal">
         <CardHeader className="bg-gray-50">
           <CardTitle className="text-sm sm:text-base md:text-lg">Certificados de Destinação</CardTitle>
           <CardDescription className="text-xs md:text-sm">Documentos dos últimos 12 meses</CardDescription>
@@ -59,9 +59,9 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
         <CardContent>
           <p className="text-xs md:text-sm text-davinci-silver">4 documentos enviados</p>
         </CardContent>
-      </Card>
+      </ColoredCard>
 
-      <Card className="border-l-4 border-l-davinci-secondary">
+      <ColoredCard borderColor="orange">
         <CardHeader className="bg-gray-50">
           <CardTitle className="text-sm sm:text-base md:text-lg">
             {isPGRS ? 'Fotos das Lixeiras' : 'Fotos das Lixeiras e Abrigo Temporário'}
@@ -77,7 +77,7 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({ planType }) => {
             {isPGRS ? '3 fotos enviadas' : '6 fotos enviadas'}
           </p>
         </CardContent>
-      </Card>
+      </ColoredCard>
 
       <div className="mt-3 sm:mt-4 md:mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg shadow-sm">
         <p className="text-xs md:text-sm text-yellow-700">
