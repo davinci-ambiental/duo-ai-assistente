@@ -80,33 +80,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-// New colored card variants based on the dashboard design
-const ColoredCard = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    borderColor?: 'green' | 'blue' | 'orange' | 'red' | 'teal';
-  }
->(({ className, borderColor = 'green', ...props }, ref) => {
-  const borderColorClass = {
-    green: 'border-l-green-500',
-    blue: 'border-l-blue-500', 
-    orange: 'border-l-orange-500',
-    red: 'border-l-red-500',
-    teal: 'border-l-davinci-teal'
-  }[borderColor];
-
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "rounded-lg border bg-card text-card-foreground shadow border-l-4",
-        borderColorClass,
-        className
-      )}
-      {...props}
-    />
-  );
-});
-ColoredCard.displayName = "ColoredCard"
-
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, ColoredCard }
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }

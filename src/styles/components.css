@@ -92,24 +92,3 @@
   background: white;
   border-radius: 0 0 12px 12px;
 }
-
-/* Colored card borders - following dashboard design */
-.colored-card-green {
-  @apply border-l-4 border-l-green-500;
-}
-
-.colored-card-blue {
-  @apply border-l-4 border-l-blue-500;
-}
-
-.colored-card-orange {
-  @apply border-l-4 border-l-orange-500;
-}
-
-.colored-card-red {
-  @apply border-l-4 border-l-red-500;
-}
-
-.colored-card-teal {
-  @apply border-l-4 border-l-davinci-teal;
-}
